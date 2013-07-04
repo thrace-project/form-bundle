@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+	        <trans-unit id="1">
+                <source>remText</source>
+                <target>%n character%s remaining.</target>
+            </trans-unit>   
+                 
+	        <trans-unit id="2">
+                <source>limitText</source>
+                <target>Field limited to %n character%s.</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="3">
+                <source>validator.recaptcha.empty</source>
+                <target>Recaptcha element is empty</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="4">
+                <source>validator.recaptcha.invalid</source>
+                <target>Recaptcha element is not valid</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="5">
+                <source>exception.image.open</source>
+                <target>Image with name "{name}" can not be opened.</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="6">
+                <source>exception.image.out_of_bounds</source>
+                <target>Image with name "{name}" has not valid crop coordinates.</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="7">
+                <source>exception.image.crop</source>
+                <target>Image with name "{name}" is invalid.</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="8">
+                <source>upload_progress</source>
+                <target>Upload progress</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="9">
+                <source>button_upload_title</source>
+                <target>Upload</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="10">
+                <source>button_title_enabled</source>
+                <target>enable/disable</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="11">
+                <source>button_view_title</source>
+                <target>Preview</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="12">
+                <source>button_crop_title</source>
+                <target>Crop</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="13">
+                <source>button_edit_meta_title</source>
+                <target>Meta</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="14">
+                <source>button_rotate_title</source>
+                <target>Rotate</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="15">
+                <source>button_reset_title</source>
+                <target>Reset</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="16">
+                <source>button_remove_title</source>
+                <target>Reset</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="17">
+                <source>dialog_crop_title</source>
+                <target>Croping</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="18">
+                <source>dialog_crop_button_cancel</source>
+                <target>Cancel</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="19">
+                <source>dialog_crop_button_crop</source>
+                <target>Crop</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="20">
+                <source>dialog_edit_meta_title</source>
+                <target>Meta information</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="21">
+                <source>dialog_edit_meta_label_title</source>
+                <target>Meta title</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="22">
+                <source>dialog_edit_meta_label_caption</source>
+                <target>Meta caption</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="23">
+                <source>dialog_edit_meta_label_description</source>
+                <target>Meta description</target>
+            </trans-unit>  
+            
+	        <trans-unit id="24">
+                <source>dialog_edit_meta_button_done</source>
+                <target>Done</target>
+            </trans-unit>  
+            
+	        <trans-unit id="25">
+                <source>drag_drop_image_text</source>
+                <target>Drag and drop images here</target>
+            </trans-unit>  
+            
+	        <trans-unit id="26">
+                <source>no_images_found</source>
+                <target>No images found</target>
+            </trans-unit>  
+            
+	        <trans-unit id="27">
+                <source>no_file_uploaded</source>
+                <target>No file uploaded</target>
+            </trans-unit>  
+            
+	        <trans-unit id="28">
+                <source>no_filename</source>
+                <target>No filename</target>
+            </trans-unit>  
+            
+	        <trans-unit id="29">
+                <source>no_filename</source>
+                <target>No filename</target>
+            </trans-unit>  
+            
+	        <trans-unit id="30">
+                <source>drag_drop_file_text</source>
+                <target>Drag and drops files here</target>
+            </trans-unit>  
+            
+	        <trans-unit id="31">
+                <source>no_file_text</source>
+                <target>No files</target>
+            </trans-unit>  
+            
+	        <trans-unit id="32">
+                <source>multi_select_sortable.error</source>
+                <target>Row already exists.</target>
+            </trans-unit>  
+            
+	        <trans-unit id="33">
+                <source>multi_select_sortable.description</source>
+                <target>Drag and drop rows here</target>
+            </trans-unit>  
+              
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="thrace_form.form.type.autocomplete.class">Thrace\FormBundle\Form\Type\AutocompleteType</parameter>
+        <parameter key="thrace_form.form.type.buttonset.class">Thrace\FormBundle\Form\Type\ButtonsetType</parameter>
+        <parameter key="thrace_form.form.type.colorpicker.class">Thrace\FormBundle\Form\Type\ColorPickerType</parameter>
+        <parameter key="thrace_form.form.type.datepicker.class">Thrace\FormBundle\Form\Type\DatePickerType</parameter>
+        <parameter key="thrace_form.form.type.daterangepicker.class">Thrace\FormBundle\Form\Type\DateRangePickerType</parameter>
+        <parameter key="thrace_form.form.type.datetimepicker.class">Thrace\FormBundle\Form\Type\DateTimePickerType</parameter>
+        <parameter key="thrace_form.form.type.datetimerangepicker.class">Thrace\FormBundle\Form\Type\DateTimeRangePickerType</parameter>
+        <parameter key="thrace_form.form.type.timepicker.class">Thrace\FormBundle\Form\Type\TimePickerType</parameter>
+        <parameter key="thrace_form.form.type.input_limiter.class">Thrace\FormBundle\Form\Type\InputLimiterType</parameter>
+        <parameter key="thrace_form.form.type.rating.class">Thrace\FormBundle\Form\Type\RatingType</parameter>
+        <parameter key="thrace_form.form.type.recaptcha.class">Thrace\FormBundle\Form\Type\RecaptchaType</parameter>
+        <parameter key="thrace_form.validator.constraint.recaptcha.class">Thrace\FormBundle\Validator\COnstraint\RacaptchaValidator</parameter>
+  		<parameter key="thrace_form.form.type.select2.class">Thrace\FormBundle\Form\Type\Select2Type</parameter>
+  		<parameter key="thrace_form.form.type.select2_dependent.class">Thrace\FormBundle\Form\Type\Select2DependentType</parameter>
+  		<parameter key="thrace_form.form.data_transformer.array_to_string.class">Thrace\FormBundle\Form\DataTransformer\ArrayToStringTransformer</parameter>
+  		<parameter key="thrace_form.form.type.slider.class">Thrace\FormBundle\Form\Type\SliderType</parameter>
+  		<parameter key="thrace_form.form.type.slider_range.class">Thrace\FormBundle\Form\Type\SliderRangeType</parameter>
+  		<parameter key="thrace_form.form.type.spinner.class">Thrace\FormBundle\Form\Type\SpinnerType</parameter>
+  		<parameter key="thrace_form.form.type.toggle_button.class">Thrace\FormBundle\Form\Type\ToggleButtonType</parameter>
+  		<parameter key="thrace_form.form.type.tinymce.class">Thrace\FormBundle\Form\Type\TinyMceType</parameter>
+  		<parameter key="thrace_form.form.type.multi_select.class">Thrace\FormBundle\Form\Type\MultiSelectType</parameter>
+  		<parameter key="thrace_form.form.type.multi_select_collection.class">Thrace\FormBundle\Form\Type\MultiSelectCollectionType</parameter>
+  		<parameter key="thrace_form.form.data_transformer.doctrine_orm.class">Thrace\FormBundle\Form\DataTransformer\DoctrineORMTransformer</parameter>
+  		<parameter key="thrace_form.form.type.multi_select_sortable.class">Thrace\FormBundle\Form\Type\MultiSelectSortableType</parameter>
+  		<parameter key="thrace_form.form.data_transformer.array_collection_to_string.class">Thrace\FormBundle\Form\DataTransformer\ArrayCollectionToStringTransformer</parameter>
+  		
+    </parameters>
+	<services>
+	    <service id="thrace_form.form.type.autocomplete" class="%thrace_form.form.type.autocomplete.class%">
+		    <tag name="form.type" alias="thrace_autocomplete" />
+		</service>
+		
+	    <service id="thrace_form.form.type.buttonset" class="%thrace_form.form.type.buttonset.class%" abstract="true" />
+	    
+	    <service id="thrace_form.form.type.colorpicker" class="%thrace_form.form.type.colorpicker.class%">
+		    <tag name="form.type" alias="thrace_colorpicker" />
+		</service>
+	    
+	    <service id="thrace_form.form.type.datepicker" class="%thrace_form.form.type.datepicker.class%">
+		    <tag name="form.type" alias="thrace_datepicker" />
+		</service>
+	    
+	    <service id="thrace_form.form.type.daterangepicker" class="%thrace_form.form.type.daterangepicker.class%">
+		    <tag name="form.type" alias="thrace_daterangepicker" />
+		</service>
+	    
+	    <service id="thrace_form.form.type.datetimepicker" class="%thrace_form.form.type.datetimepicker.class%">
+		    <tag name="form.type" alias="thrace_datetimepicker" />
+		</service>
+	    
+	    <service id="thrace_form.form.type.datetimerangepicker" class="%thrace_form.form.type.datetimerangepicker.class%">
+		    <tag name="form.type" alias="thrace_datetimerangepicker" />
+		</service>
+	    
+	    <service id="thrace_form.form.type.timepicker" class="%thrace_form.form.type.timepicker.class%">
+		    <tag name="form.type" alias="thrace_timepicker" />
+		</service>
+	    
+	    <service id="thrace_form.form.type.input_limiter" class="%thrace_form.form.type.input_limiter.class%">
+		    <tag name="form.type" alias="thrace_input_limiter" />
+		</service>
+	    
+	    <service id="thrace_form.form.type.rating" class="%thrace_form.form.type.rating.class%">
+		    <tag name="form.type" alias="thrace_rating" />
+		</service>
+		
+		<service id="thrace_form.form.type.recaptcha" class="%thrace_form.form.type.recaptcha.class%" />
+        
+        <service id="thrace_form.validator.constraint.recaptcha" class="%thrace_form.validator.constraint.recaptcha.class%" scope="request">
+            <argument type="service" id="request" />
+        </service>
+        
+        <service id="thrace_form.form.type.select2" class="%thrace_form.form.type.select2.class%">
+            <argument type="service" id="thrace_form.form.data_transformer.array_to_string" />
+            <tag name="form.type" alias="thrace_select2" />
+        </service>
+        
+        <service id="thrace_form.form.type.select2_dependent" class="%thrace_form.form.type.select2_dependent.class%">
+            <tag name="form.type" alias="thrace_select2_dependent" />
+        </service>
+        
+        <service id="thrace_form.form.data_transformer.array_to_string" class="%thrace_form.form.data_transformer.array_to_string.class%" />
+        
+		<service id="thrace_form.form.type.slider" class="%thrace_form.form.type.slider.class%">
+            <tag name="form.type" alias="thrace_slider" />
+        </service>
+        
+		<service id="thrace_form.form.type.slider_range" class="%thrace_form.form.type.slider_range.class%">
+            <tag name="form.type" alias="thrace_slider_range" />
+        </service>
+        
+		<service id="thrace_form.form.type.spinner" class="%thrace_form.form.type.spinner.class%">
+            <tag name="form.type" alias="thrace_spinner" />
+        </service>
+        
+		<service id="thrace_form.form.type.toggle_button" class="%thrace_form.form.type.toggle_button.class%">
+            <tag name="form.type" alias="thrace_toggle_button" />
+        </service>
+        
+        <service id="thrace_form.form.type.tinymce" class="%thrace_form.form.type.tinymce.class%" />
+        
+        <service id="thrace_form.form.type.multi_select_colection" 
+            class="%thrace_form.form.type.multi_select_collection.class%">
+            
+            <tag name="form.type" alias="thrace_multi_select_collection" />
+        </service>
+        
+        <service id="thrace_form.form.type.multi_select" 
+            class="%thrace_form.form.type.multi_select.class%">
+            
+            <argument type="service"  id="thrace_form.form.data_transformer.doctrine_orm" />
+            <tag name="form.type" alias="thrace_multi_select" />
+        </service>
+        
+        <service id="thrace_form.form.data_transformer.doctrine_orm" 
+            class="%thrace_form.form.data_transformer.doctrine_orm.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        
+        <service id="thrace_form.form.type.multi_select_sortable" 
+            class="%thrace_form.form.type.multi_select_sortable.class%">
+            
+            <argument type="service"  id="thrace_form.form.data_transformer.array_collection_to_string" />
+     	    <tag name="form.type" alias="thrace_multi_select_sortable" />
+        </service>
+        
+        <service id="thrace_form.form.data_transformer.array_collection_to_string" 
+            class="%thrace_form.form.data_transformer.array_collection_to_string.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        
+	</services>
+</container>

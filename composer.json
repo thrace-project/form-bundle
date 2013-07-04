@@ -1,0 +1,29 @@
+{
+    "name":         "thrace/form-bundle",
+    "description":  "This bundle provides extra form types empowered by jQuery",
+    "keywords":     ["form", "jqueryui", "jQuery", "Symfony", "tinymce", "inputlimiter", "select2", "recaptcha"],
+    "type":         "symfony-bundle",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":  "Nikolay Georgiev",
+            "email": "symfonist@gmail.com"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.*-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/framework-bundle": ">=2.1,<2.4",
+    },
+    "require-dev": {
+        "thrace/component-bundle": "*"
+    },
+    "autoload": {
+        "psr-0": { "Thrace\\FormBundle": "" }
+    },
+    "target-dir": "Thrace/FormBundle"
+}

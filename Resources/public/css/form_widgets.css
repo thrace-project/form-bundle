@@ -1,0 +1,133 @@
+@CHARSET "UTF-8";
+.ui-widget { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: .9em; }
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+}
+
+.thrace-colorpicker div{
+    float:left;
+}
+
+.colorSelector{
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: url(../images/select2.png);
+}
+
+.colorSelector div {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 28px;
+    height: 28px;
+    background: url(../images/select2.png) center;
+}
+.thrace-form-label {
+    padding-right: 20px;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.thrace-form input,textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.thrace-form-text{
+    border: 1px solid #999;
+    padding: 10px;
+    width: 300px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    color: #666;
+    background: url(../images/bg_fade_sml.png) repeat-x top;
+}
+
+.thrace-sortable { list-style-type: none; margin: 0; padding: 0; }
+.thrace-sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; border-style:solid; border-width:5px; }
+
+.thrace-sortable .selected { border-color:green; }
+
+.ui-selecting { background: #eee; }
+   .ui-selecting .handle { background: #ddd; }
+   .ui-selected { background: #def; }
+   .ui-selected .handle { background: #cde; }
+
+.thrace-image, .thrace-multi-image-upload-error, .thrace-progress-info {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.thrace-controls {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.thrace-drag-drop {
+    border: 4px dashed #DDD;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.thrace-drag-drop .thrace-drag-drop-inside {
+    margin: 70px auto 0;
+    width: 250px;
+}
+
+.thrace-drag-drop-inside p.thrace-drag-drop-info {
+    font-size: 20px;
+}
+
+.thrace-drag-drop .thrace-drag-drop-inside p {
+    text-align: center;
+}
+
+.thrace-drag-drop-inside p {
+    color: #AAA;
+    margin: 5px 0;
+}
+
+
+.thrace-grid{
+    width: 620px;;
+}
+
+.multi-select-sortable { 
+	 
+    margin-top: 20px;
+    border:5px dotted grey;
+    padding: 5px; 
+    width: 600px;
+    min-height:200px;
+  
+}
+.multi-select-sortable .multi-select-element {  margin-left: 15px; padding: 7px; width: 550px; cursor: move; font-size: 12px;}
+
+.multi-select-sortable > .ui-state-highlight { margin-left: 15px; padding: 7px; width: 550px !important; font-size: 12px;}
+html>body  .multi-select-element {  margin: 5px; padding: 7px; width: 550px !important; font-size: 12px;}
+
+.multi-select-sortable .desc {
+    text-align: center;
+    margin: 10px  !important;
+    line-height: 1 !important;
+    font-size: 7pt;
+    display: block;
+    color: #999;
+}
+
+.multi-select-sortable .multi-select-sortable-error {
+    text-align: center;
+    margin: 12px  !important;
+    line-height: 1 !important;
+    font-size: 7pt;
+    display: block;
+    color: red !important;
+}

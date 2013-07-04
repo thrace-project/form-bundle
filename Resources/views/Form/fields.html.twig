@@ -1,0 +1,190 @@
+{% block thrace_autocomplete_widget %}
+{% spaceless %}
+    {{ form_widget(form) }}
+    <span class="thrace-autocomplete" style="display:none" data-options="{{ configs|merge({'id': id})|json_encode }}"></span>
+{% endspaceless %}
+{% endblock thrace_autocomplete_widget %}
+
+{% block thrace_buttonset_widget %} 
+{% spaceless %}
+    <div id="{{ id }}-buttonset">
+        {% for child in form %}
+            {{ form_widget(child) }}
+            <label for="{{ child.vars['id'] }}">{{ child.vars['label'] }}</label>
+        {% endfor %}
+    </div>
+    <span class="thrace-buttonset" data-options="{{ configs|merge({'id':id})|json_encode }}" style="display: none"></span> 
+{% endspaceless %} 
+{% endblock thrace_buttonset_widget %} 
+
+{% block thrace_colorpicker_widget %}
+{% spaceless %}
+    {{ form_widget(form, { 'attr': {'style': 'display:none'} }) }}
+    <div id="thrace-colorpicker-widget-{{ id }}" class="colorSelector"><div style="background-color: #ffffff;"></div></div>
+    <span class="thrace-colorpicker" data-options="{{ configs|merge({'id': id})|json_encode }}" style="display:none"></span>
+{% endspaceless %}
+{% endblock thrace_colorpicker_widget %}
+
+
+{% block thrace_datepicker_widget %} 
+{% spaceless %} 
+    {{ form_widget(form) }}
+    <span class="thrace-datepicker" data-options="{{ configs|merge({'id': id, 'lang': app.request.locale, 'buttonImage': asset('bundles/thraceform/images/calendar.gif')})|json_encode }}" style="display: none"></span>
+{% endspaceless %} 
+{% endblock thrace_datepicker_widget %} 
+
+{% block thrace_daterangepicker_widget %} 
+{% spaceless %} 
+    {{ form_widget(form[configs.first_name]) }} &nbsp;
+    {{ form_widget(form[configs.second_name]) }}
+    <span class="thrace-daterangepicker" data-options="{{ configs|merge({'id': id})|json_encode }}" style="display: none"></span>
+{% endspaceless %} 
+{% endblock thrace_daterangepicker_widget %} 
+
+{% block thrace_datetimepicker_widget %} 
+{% spaceless %} 
+    {{ form_widget(form) }}
+    <span class="thrace-datetimepicker" data-options="{{ configs|merge({'id': id, 'lang': app.request.locale, 'buttonImage': asset('bundles/thraceform/images/calendar.gif')})|json_encode }}" style="display: none"></span>
+{% endspaceless %} 
+{% endblock thrace_datetimepicker_widget %} 
+
+{% block thrace_datetimerangepicker_widget %} 
+{% spaceless %} 
+    {{ form_widget(form[configs.first_name]) }} &nbsp;
+    {{ form_widget(form[configs.second_name]) }}
+    <span class="thrace-datetimerangepicker" data-options="{{ configs|merge({'id': id})|json_encode }}" style="display: none"></span>
+{% endspaceless %} 
+{% endblock thrace_datetimerangepicker_widget %} 
+
+{% block thrace_timepicker_widget %} 
+{% spaceless %} 
+    {{ form_widget(form) }}
+    <span class="thrace-timepicker" data-options="{{ configs|merge({'id': id, 'lang': app.request.locale, 'buttonImage': asset('bundles/thraceform/images/calendar.gif')})|json_encode }}" style="display: none"></span>
+{% endspaceless %} 
+{% endblock thrace_timepicker_widget %} 
+
+{% block thrace_input_limiter_widget %}
+{% spaceless %}
+    {% set extraConfigs = {
+        'id': id,
+        'remText': 'remText'|trans({}, translation_domain),
+        'limitText': 'limitText'|trans({}, translation_domain),
+    } %}
+    {{ form_widget(form) }} 
+    <span class="thrace-input-limiter" data-options="{{ configs|merge(extraConfigs)|json_encode }}" style="display:none"></span>
+{% endspaceless %}
+{% endblock thrace_input_limiter_widget %}
+
+{% block thrace_rating_widget %}
+{% spaceless %}
+    {{ form_widget(form, { 'attr': {'style': 'display:none'} }) }}
+    <div id="thrace-rating-widget-{{ id }}"></div>
+    <span class="thrace-rating" data-options="{{ configs|merge({'id': id, 'path': asset(configs.path)})|json_encode }}" style="display:none"></span>  
+{% endspaceless %}
+{% endblock thrace_rating_widget %}
+
+{% block thrace_recaptcha_widget %}
+{% spaceless %}
+    <div id="{{ id }}" style="display: none;"></div>
+    <noscript>
+        <iframe src="{{ configs.server_url }}/noscript?k={{ configs.public_key }}" width="500" height="300" frameborder="0"></iframe>
+        <br />
+        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+        <input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
+    </noscript>
+    <span class="thrace-recaptcha" data-options="{{ configs|merge({'id': id, 'lang': app.request.locale})|json_encode }}" style="display:none"></span>
+{% endspaceless %}
+{% endblock thrace_recaptcha_widget %}
+
+{% block thrace_select2_widget %} 
+{% spaceless %}
+    {% set extraConfigs = {
+        '_id': id,
+        'placeholder': configs.placeholder|trans({}, translation_domain),
+    } %}
+    
+    {{ form_widget(form) }}
+    <span class="thrace-select2" data-options="{{ configs|merge(extraConfigs)|json_encode }}" style="display: none"></span>
+{% endspaceless %} 
+{% endblock thrace_select2_widget %} 
+
+{% block thrace_select2_dependent_widget %} 
+{% spaceless %} 
+    {{ form_widget(form[configs.first_name]) }} &nbsp;&nbsp;
+    {{ form_widget(form[configs.second_name]) }}
+    <span class="thrace-select2-dependent" data-options="{{ configs|merge({'id': id})|json_encode }}" style="display: none"></span>
+{% endspaceless %} 
+{% endblock thrace_select2_dependent_widget %}
+
+{% block thrace_slider_widget %} 
+{% spaceless %} 
+    {{ form_widget(form, { 'attr': {'style': 'display:none'} }) }}
+    <span id="thrace-slider-tpl-{{ id }}" class="thrace-slider-tpl">{{ configs.tpl|trans({}, translation_domain) }}</span>
+    <div id="thrace-slider-{{ id }}" {% if configs.width is defined %} style="width:{{ configs.width }}
+        {% elseif configs.height is defined %} style="height:{{ configs.height }} 
+        {% endif %}" >
+    </div>
+    <span class="thrace-slider" data-options="{{ configs|merge({'id': id})|json_encode}}" style="display:none"></span>
+{% endspaceless %}
+{% endblock thrace_slider_widget %}
+
+{% block thrace_slider_range_widget %}
+{% spaceless %} 
+    {{ form_widget(form) }}
+    <span id="thrace-slider-range-tpl-{{ id }}" class="thrace-slider-range-tpl">{{ configs.tpl|trans({}, translation_domain) }}</span>
+    <div id="thrace-slider-range-{{ id }}" {% if configs.width is defined %} style="width:{{ configs.width }} 
+        {% elseif configs.height is defined  %} style="height:{{ configs.height }} 
+        {% endif %}" >
+    </div>
+    <span class="thrace-slider-range" data-options="{{ configs|merge({'id': id})|json_encode }}" style="display:none"></span>
+{% endspaceless %}
+{% endblock thrace_slider_range_widget %}
+
+{% block thrace_spinner_widget %}
+{% spaceless %}
+    {{ form_widget(form) }}
+    <span class="thrace-spinner" style="display:none" data-options="{{ configs|merge({'id': id, 'culture': app.request.locale })|json_encode }}"></span>
+{% endspaceless %}
+{% endblock thrace_spinner_widget %}
+
+{% block thrace_toggle_button_widget %} 
+{% spaceless %}
+    {% set extra = {
+        'id': id ~ '-widget',
+        'checked_label': configs.checked_label|trans({}, translation_domain),
+        'unchecked_label': configs.unchecked_label|trans({}, translation_domain),
+    } %}
+
+    <input type="checkbox" id="{{ extra.id }}"" {% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+    <label for="{{ extra.id }}">{{ form.vars['label'] }}</label>
+    <span class="thrace-toggle-button" data-options="{{ configs|merge(extra)|json_encode }}" style="display: none"></span>
+{% endspaceless %} 
+{% endblock thrace_toggle_button_widget %}
+
+
+{% block thrace_tinymce_widget %}
+{% spaceless %}
+   {{ form_widget(form) }} 
+   <span class="thrace-tinymce" data-options=" {{ configs|merge({'id': id, 'base_url': asset(''), 'lang': app.request.locale})|json_encode }}" style="display:none"></span>
+{% endspaceless %}
+{% endblock thrace_tinymce_widget %}
+
+{% block thrace_multi_select_collection_widget %}
+{% spaceless %} 
+    <div data-prototype="{{ form_widget(form.vars['prototype']) | e }}" data-options="{{ configs|merge({'id': id})|json_encode}}" class="thrace-multi-select">           
+        {{ thrace_datagrid(grid) }}
+        <div id="thrace-multi-select-form-{{ id }}">
+        {% for child in form %}
+            {{ form_widget(child) }}
+        {% endfor %}
+        </div>
+    </div>    
+{% endspaceless %}
+{% endblock thrace_multi_select_collection_widget %}
+
+{% block thrace_multi_select_sortable_widget %}
+{% spaceless %} 
+    {{ form_widget(form) }}
+    <span data-options="{{ configs|merge({'id': id})|json_encode }}" class="thrace-multi-select-sortable"></span>    
+{% endspaceless %}
+{% endblock thrace_multi_select_sortable_widget %}

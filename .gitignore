@@ -1,0 +1,9 @@
+# PHPUnit special files
+phpunit.xml
+
+# Doctrine backup files 
+*.php~
+
+# Filesystem
+.DS_Store
+
