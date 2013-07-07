@@ -30,7 +30,7 @@ Features include:
 
 **Caution:** This bundle is developed in sync with [symfony's repository](https://github.com/symfony/symfony). 
 
-[![Build Status](https://secure.travis-ci.org/FriendsOfSymfony/FOSUserBundle.png?branch=master)](http://travis-ci.org/FriendsOfSymfony/FOSUserBundle) [!
+[![Build Status](https://travis-ci.org/thrace-project/form-bundle.png?branch=master)](https://travis-ci.org/thrace-project/form-bundle)
 
 Documentation
 -------------
