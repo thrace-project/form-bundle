@@ -30,6 +30,8 @@ Features include:
 
 **Caution:** This bundle is developed in sync with [symfony's repository](https://github.com/symfony/symfony). 
 
+[![Build Status](https://secure.travis-ci.org/FriendsOfSymfony/FOSUserBundle.png?branch=master)](http://travis-ci.org/FriendsOfSymfony/FOSUserBundle) [!
+
 Documentation
 -------------
 
@@ -41,6 +43,11 @@ Installation
 ------------
 
 All the installation instructions are located in [documentation](https://github.com/thrace-project/form-bundle/blob/master/Resources/doc/index.md).
+
+**Note:** to run test php 
+composer.phar install --dev --prefer-source then
+phpunit.phar
+
 
 Reporting an issue or a feature request
 ---------------------------------------
