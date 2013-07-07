@@ -7,7 +7,7 @@ use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
 use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
 
-class ButtonsetypeTest extends TypeTestCase
+class ButtonseTypeTest extends TypeTestCase
 {
 
     public function testConfig()
