@@ -32,7 +32,7 @@ class MultiSelectCollectionTypeTest extends TypeTestCase
         
         $view = $form->createView();
         $configs = $view->vars['configs'];
-        $this->assertSame(array(), $configs);
+        $this->assertSame(array('datagrid_exists' => true), $configs);
     }
     
     public function testWithInvalidDataGrid()
@@ -60,7 +60,7 @@ class MultiSelectCollectionTypeTest extends TypeTestCase
     	return array(
 			new TypeExtensionTest(
 				array(
-			        new MultiSelectCollectionType(),
+			        new MultiSelectCollectionType(true),
 				    new MultiSelectType($this->createMockTransformer())
 		        )
 			)

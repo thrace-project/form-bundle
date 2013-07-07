@@ -10,12 +10,12 @@
 namespace Thrace\FormBundle\Model;
 
 /**
- * Interface that implements MultiSelectSortableReference class
+ * Interface that implements Select2Sortable class
  *
  * @author Nikolay Georgiev <symfonist@gmail.com>
  * @since 1.0
  */
-interface MultiSelectSortableReferenceInterface
+interface Select2SortableInterface
 {
     /**
      * Gets the id 

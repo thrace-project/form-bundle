@@ -31,6 +31,21 @@ class MultiSelectCollectionType extends AbstractType
 {
 
     /**
+     * @var boolean
+     */
+    protected $datagridExists;
+    
+    /**
+     * Construct
+     * 
+     * @param boolean $datagridExists
+     */
+    public function __construct($datagridExists)
+    {
+        $this->datagridExists = (bool) $datagridExists;
+    }
+    
+    /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::buildView()
      */
@@ -53,7 +68,9 @@ class MultiSelectCollectionType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $defaultConfigs = array();
+        $defaultConfigs = array(
+            'datagrid_exists' => $this->datagridExists        
+        );
         
         $resolver->setDefaults(array(
             'allow_add' => true,

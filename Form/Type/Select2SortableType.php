@@ -11,10 +11,6 @@ namespace Thrace\FormBundle\Form\Type;
 
 use Symfony\Component\Form\DataTransformerInterface;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-
-use Thrace\DataGridBundle\DataGrid\DataGridInterface;
-
 use Symfony\Component\Form\FormView;
 
 use Symfony\Component\OptionsResolver\Options;
@@ -33,10 +29,12 @@ use Symfony\Component\Form\AbstractType;
  * @author Nikolay Georgiev <symfonist@gmail.com>
  * @since 1.0
  */
-class MultiSelectSortableType extends AbstractType
+class Select2SortableType extends AbstractType
 {
     
-    
+    /**
+     * @var DataTransformerInterface
+     */
     protected $dataTransformer;
     
     /**
@@ -110,6 +108,6 @@ class MultiSelectSortableType extends AbstractType
      */
     public function getName()
     {
-        return 'thrace_multi_select_sortable';
+        return 'thrace_select2_sortable';
     }
 }

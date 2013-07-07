@@ -20,7 +20,8 @@
         "symfony/framework-bundle": ">=2.1,<2.4"
     },
     "require-dev": {
-        "thrace/component-bundle": "*"
+        "thrace/component-bundle": "*",
+        "phpunit/phpunit": "3.7.*@dev"
     },
     "autoload": {
         "psr-0": { "Thrace\\FormBundle": "" }

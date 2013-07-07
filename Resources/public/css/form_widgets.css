@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 .ui-widget { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: .9em; }
+
 .ui-autocomplete-category {
     font-weight: bold;
     padding: .2em .4em;
@@ -29,31 +30,7 @@
     height: 28px;
     background: url(../images/select2.png) center;
 }
-.thrace-form-label {
-    padding-right: 20px;
-    display: block;
-    padding-bottom: 10px;
-}
 
-.thrace-form input,textarea {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.thrace-form-text{
-    border: 1px solid #999;
-    padding: 10px;
-    width: 300px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    margin-bottom: 5px;
-    color: #666;
-    background: url(../images/bg_fade_sml.png) repeat-x top;
-}
-
-.thrace-sortable { list-style-type: none; margin: 0; padding: 0; }
-.thrace-sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; border-style:solid; border-width:5px; }
-
-.thrace-sortable .selected { border-color:green; }
 
 .ui-selecting { background: #eee; }
    .ui-selecting .handle { background: #ddd; }
@@ -96,38 +73,7 @@
 }
 
 
-.thrace-grid{
+.thrace-grid {
     width: 620px;;
 }
 
-.multi-select-sortable { 
-	 
-    margin-top: 20px;
-    border:5px dotted grey;
-    padding: 5px; 
-    width: 600px;
-    min-height:200px;
-  
-}
-.multi-select-sortable .multi-select-element {  margin-left: 15px; padding: 7px; width: 550px; cursor: move; font-size: 12px;}
-
-.multi-select-sortable > .ui-state-highlight { margin-left: 15px; padding: 7px; width: 550px !important; font-size: 12px;}
-html>body  .multi-select-element {  margin: 5px; padding: 7px; width: 550px !important; font-size: 12px;}
-
-.multi-select-sortable .desc {
-    text-align: center;
-    margin: 10px  !important;
-    line-height: 1 !important;
-    font-size: 7pt;
-    display: block;
-    color: #999;
-}
-
-.multi-select-sortable .multi-select-sortable-error {
-    text-align: center;
-    margin: 12px  !important;
-    line-height: 1 !important;
-    font-size: 7pt;
-    display: block;
-    color: red !important;
-}

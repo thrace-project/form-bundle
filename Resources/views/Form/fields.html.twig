@@ -164,7 +164,7 @@
 
 {% block thrace_tinymce_widget %}
 {% spaceless %}
-   {{ form_widget(form) }} 
+    {{ form_widget(form) }}
    <span class="thrace-tinymce" data-options=" {{ configs|merge({'id': id, 'base_url': asset(''), 'lang': app.request.locale})|json_encode }}" style="display:none"></span>
 {% endspaceless %}
 {% endblock thrace_tinymce_widget %}
@@ -172,7 +172,9 @@
 {% block thrace_multi_select_collection_widget %}
 {% spaceless %} 
     <div data-prototype="{{ form_widget(form.vars['prototype']) | e }}" data-options="{{ configs|merge({'id': id})|json_encode}}" class="thrace-multi-select">           
-        {{ thrace_datagrid(grid) }}
+        {% if configs.datagrid_exists %} 
+            {% include 'ThraceFormBundle:Form:datagrid.html.twig' with {'grid': grid} %}
+        {% endif %}
         <div id="thrace-multi-select-form-{{ id }}">
         {% for child in form %}
             {{ form_widget(child) }}
@@ -182,9 +184,9 @@
 {% endspaceless %}
 {% endblock thrace_multi_select_collection_widget %}
 
-{% block thrace_multi_select_sortable_widget %}
+{% block thrace_select2_sortable_widget %}
 {% spaceless %} 
     {{ form_widget(form) }}
-    <span data-options="{{ configs|merge({'id': id})|json_encode }}" class="thrace-multi-select-sortable"></span>    
+    <span data-options="{{ configs|merge({'id': id})|json_encode }}" class="thrace-select2-sortable"></span>    
 {% endspaceless %}
-{% endblock thrace_multi_select_sortable_widget %}
+{% endblock thrace_select2_sortable_widget %}

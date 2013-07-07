@@ -16,7 +16,7 @@
         <parameter key="thrace_form.form.type.input_limiter.class">Thrace\FormBundle\Form\Type\InputLimiterType</parameter>
         <parameter key="thrace_form.form.type.rating.class">Thrace\FormBundle\Form\Type\RatingType</parameter>
         <parameter key="thrace_form.form.type.recaptcha.class">Thrace\FormBundle\Form\Type\RecaptchaType</parameter>
-        <parameter key="thrace_form.validator.constraint.recaptcha.class">Thrace\FormBundle\Validator\COnstraint\RacaptchaValidator</parameter>
+        <parameter key="thrace_form.validator.constraint.recaptcha.class">Thrace\FormBundle\Validator\Constraint\RacaptchaValidator</parameter>
   		<parameter key="thrace_form.form.type.select2.class">Thrace\FormBundle\Form\Type\Select2Type</parameter>
   		<parameter key="thrace_form.form.type.select2_dependent.class">Thrace\FormBundle\Form\Type\Select2DependentType</parameter>
   		<parameter key="thrace_form.form.data_transformer.array_to_string.class">Thrace\FormBundle\Form\DataTransformer\ArrayToStringTransformer</parameter>
@@ -28,7 +28,7 @@
   		<parameter key="thrace_form.form.type.multi_select.class">Thrace\FormBundle\Form\Type\MultiSelectType</parameter>
   		<parameter key="thrace_form.form.type.multi_select_collection.class">Thrace\FormBundle\Form\Type\MultiSelectCollectionType</parameter>
   		<parameter key="thrace_form.form.data_transformer.doctrine_orm.class">Thrace\FormBundle\Form\DataTransformer\DoctrineORMTransformer</parameter>
-  		<parameter key="thrace_form.form.type.multi_select_sortable.class">Thrace\FormBundle\Form\Type\MultiSelectSortableType</parameter>
+  		<parameter key="thrace_form.form.type.select2_sortable.class">Thrace\FormBundle\Form\Type\Select2SortableType</parameter>
   		<parameter key="thrace_form.form.data_transformer.array_collection_to_string.class">Thrace\FormBundle\Form\DataTransformer\ArrayCollectionToStringTransformer</parameter>
   		
     </parameters>
@@ -108,7 +108,7 @@
         
         <service id="thrace_form.form.type.multi_select_colection" 
             class="%thrace_form.form.type.multi_select_collection.class%">
-            
+            <argument>%thrace_form.datagrid_exists%</argument>
             <tag name="form.type" alias="thrace_multi_select_collection" />
         </service>
         
@@ -124,11 +124,11 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
         
-        <service id="thrace_form.form.type.multi_select_sortable" 
-            class="%thrace_form.form.type.multi_select_sortable.class%">
+        <service id="thrace_form.form.type.select2_sortable" 
+            class="%thrace_form.form.type.select2_sortable.class%">
             
-            <argument type="service"  id="thrace_form.form.data_transformer.array_collection_to_string" />
-     	    <tag name="form.type" alias="thrace_multi_select_sortable" />
+            <argument type="service" id="thrace_form.form.data_transformer.array_collection_to_string" />
+     	    <tag name="form.type" alias="thrace_select2_sortable" />
         </service>
         
         <service id="thrace_form.form.data_transformer.array_collection_to_string" 

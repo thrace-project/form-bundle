@@ -47,10 +47,12 @@ class ThraceFormExtension extends Extension
                 ->addArgument($config['tinymce'])
                 ->addTag('form.type', array('alias' => 'thrace_tinymce'))
             ;
-        }
+        } 
         
         $this->loadExtendedTypes('thrace_form.form.type.buttonset', 'thrace_buttonset', $container);
         $this->loadExtendedTypes('thrace_form.form.type.select2', 'thrace_select2', $container);
+        
+        $container->setParameter('thrace_form.datagrid_exists', class_exists('Thrace\DataGridBundle\ThraceDatagridBundle'));
     }
     
     /**

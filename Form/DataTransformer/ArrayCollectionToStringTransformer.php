@@ -9,6 +9,8 @@
  */
 namespace Thrace\FormBundle\Form\DataTransformer;
 
+use Thrace\FormBundle\Model\Select2SortableInterface;
+
 use Doctrine\ORM\PersistentCollection;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -18,8 +20,6 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
-use Thrace\FormBundle\Model\MultiSelectSortableReferenceInterface;
 
 use Symfony\Component\Form\DataTransformerInterface;
 
@@ -75,8 +75,8 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
         $accessor = PropertyAccess::createPropertyAccessor();
         
         foreach ($collection as $ref){
-            if (!$ref instanceof MultiSelectSortableReferenceInterface){
-                throw new \InvalidArgumentException('Reference class must be instance of MultiSelectSortableInterface');  
+            if (!$ref instanceof Select2SortableInterface){
+                throw new \InvalidArgumentException('Reference class must be instance of Select2SortableInterface');  
             }
             
             $data[] = $accessor->getValue($ref, $this->inversedProperty)->getId();

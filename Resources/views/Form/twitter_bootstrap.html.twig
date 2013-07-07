@@ -1,6 +1,0 @@
-{% block thrace_autocomplete_widget %}
-{% spaceless %}
-{{ form_widget(form) }}
-<span class="thrace-autocomplete" style="display:none" data-options="{{ configs|merge({'id': id})|json_encode }}"></span>
-{% endspaceless %}
-{% endblock thrace_autocomplete_widget %}
