@@ -4,7 +4,7 @@ MultiSelectSortable
 Select2Sortable is based on [Select2 drag and drop sorting](http://ivaynberg.github.com/select2/). 
 
 Imagine that you have a showcase page in your website and you want to add some projects to it.
-But you have to be able not only to add projects but sort them. The solution is *MultiSelectSortable*.
+But you have to be able not only to add projects but sort them. The solution is *Select2Sortable*.
 
 ### Usage:
 
