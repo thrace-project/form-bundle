@@ -30,7 +30,7 @@
   		<parameter key="thrace_form.form.data_transformer.doctrine_orm.class">Thrace\FormBundle\Form\DataTransformer\DoctrineORMTransformer</parameter>
   		<parameter key="thrace_form.form.type.select2_sortable.class">Thrace\FormBundle\Form\Type\Select2SortableType</parameter>
   		<parameter key="thrace_form.form.data_transformer.array_collection_to_string.class">Thrace\FormBundle\Form\DataTransformer\ArrayCollectionToStringTransformer</parameter>
-  		
+  		<parameter key="thrace_form.form.type.collection.class">Thrace\FormBundle\Form\Type\CollectionType</parameter>
     </parameters>
 	<services>
 	    <service id="thrace_form.form.type.autocomplete" class="%thrace_form.form.type.autocomplete.class%">
@@ -134,6 +134,11 @@
         <service id="thrace_form.form.data_transformer.array_collection_to_string" 
             class="%thrace_form.form.data_transformer.array_collection_to_string.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>       
+                
+        <service id="thrace_form.form.type.collection" 
+            class="%thrace_form.form.type.collection.class%">
+     	    <tag name="form.type" alias="thrace_collection" />
         </service>
         
 	</services>

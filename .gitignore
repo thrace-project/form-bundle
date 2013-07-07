@@ -1,5 +1,6 @@
 # PHPUnit special files
 phpunit.xml
+phpunit.phar
 
 # Doctrine backup files 
 *.php~

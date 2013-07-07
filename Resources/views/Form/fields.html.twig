@@ -190,3 +190,30 @@
     <span data-options="{{ configs|merge({'id': id})|json_encode }}" class="thrace-select2-sortable"></span>    
 {% endspaceless %}
 {% endblock thrace_select2_sortable_widget %}
+
+{% block thrace_collection_widget %}
+{% spaceless %}
+{% set extra = {
+    'id': id,
+    'add_button_text': configs.add_button_text|trans({}, translation_domain),
+    'remove_button_text': configs.remove_button_text|trans({}, translation_domain),
+    'empty_text': configs.empty_text|trans({}, translation_domain),
+} %}
+<div id="thrace-collection-container-{{ id }}">
+    {% for key, child in form %}
+    <fieldset data-idx="{{ key }}" style="margin:20px;">
+        {{ form_widget(child) }}
+        <button class="{{ configs.remove_button_class }} thrace-collection-button-remove">{{ extra.remove_button_text }}</button>
+    </fieldset>
+    {% endfor %}
+
+    <div id="thrace-collection-empty-text-{{ id }}" class="{{ configs.empty_text_class }}" {% if value.count > 0 %}style="display:none"{% endif %}>{{ extra.empty_text }}</div>
+</div>
+<br>
+<button id="thrace-collection-button-add-{{ id }}" class="{{ configs.add_button_class }}">{{ extra.add_button_text }}</button>
+
+<span id="{{ id }}" data-prototype="{{ form_widget(form.vars['prototype']) | e }}" data-options="{{ configs|merge(extra)|json_encode}}"
+    class="thrace-collection" style="display:none">
+</span>
+{% endspaceless %}
+{% endblock thrace_collection_widget %}

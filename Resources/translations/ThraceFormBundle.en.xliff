@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+	        <trans-unit id="1">
+                <source>remText</source>
+                <target>%n character%s remaining.</target>
+            </trans-unit>   
+                 
+	        <trans-unit id="2">
+                <source>limitText</source>
+                <target>Field limited to %n character%s.</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="3">
+                <source>validator.recaptcha.empty</source>
+                <target>Recaptcha element is empty</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="4">
+                <source>validator.recaptcha.invalid</source>
+                <target>Recaptcha element is not valid</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="5">
+                <source>button.add</source>
+                <target>Add</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="6">
+                <source>button.remove</source>
+                <target>Remove</target>
+            </trans-unit>  
+                 
+	        <trans-unit id="7">
+                <source>collection.empty</source>
+                <target>No records found</target>
+            </trans-unit>             
+              
+        </body>
+    </file>
+</xliff>
