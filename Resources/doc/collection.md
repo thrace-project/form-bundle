@@ -1,4 +1,4 @@
-Buttonset
+Collection
 ==========
 
 The collection type prototypes the whole sub form.
@@ -61,6 +61,9 @@ Run the following command:
 ``` bash
 $ php app/console assetic:dump
 ```
+
+**Notice** There are two jQuery event *thrace_form.collection.onAdd* and *thrace_form.collection.onRemove* attached to form collection type.
+If you have some javascript type which are build onCreate then these events can be very helpful.
 
 That's it.
 
