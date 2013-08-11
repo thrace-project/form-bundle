@@ -107,11 +107,12 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
 
         $data =  explode(',', $value);
         $referenceClass = $this->referenceClass;
+        $setInversedProperty = sprintf('set%s', ucfirst($this->inversedProperty));
         
         foreach ($data as $idx => $id){
             $inversedObject = $this->om->getReference($this->inversedClass, (int) $id);
             $referenceObject = new $referenceClass();
-            $referenceObject->setProject($inversedObject);
+            $referenceObject->{$setInversedProperty}($inversedObject);
             $referenceObject->setPosition($idx);
             $this->collection->add($referenceObject);  
         }
