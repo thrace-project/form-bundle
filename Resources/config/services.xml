@@ -16,7 +16,7 @@
         <parameter key="thrace_form.form.type.input_limiter.class">Thrace\FormBundle\Form\Type\InputLimiterType</parameter>
         <parameter key="thrace_form.form.type.rating.class">Thrace\FormBundle\Form\Type\RatingType</parameter>
         <parameter key="thrace_form.form.type.recaptcha.class">Thrace\FormBundle\Form\Type\RecaptchaType</parameter>
-        <parameter key="thrace_form.validator.constraint.recaptcha.class">Thrace\FormBundle\Validator\Constraint\RacaptchaValidator</parameter>
+        <parameter key="thrace_form.validator.constraint.recaptcha.class">Thrace\FormBundle\Validator\Constraint\RecaptchaValidator</parameter>
   		<parameter key="thrace_form.form.type.select2.class">Thrace\FormBundle\Form\Type\Select2Type</parameter>
   		<parameter key="thrace_form.form.type.select2_dependent.class">Thrace\FormBundle\Form\Type\Select2DependentType</parameter>
   		<parameter key="thrace_form.form.data_transformer.array_to_string.class">Thrace\FormBundle\Form\DataTransformer\ArrayToStringTransformer</parameter>
