@@ -83,7 +83,7 @@ class SliderType extends AbstractType
      */
     public function getParent()
     {
-        return 'integer';
+        return 'text';
     }
 
     /**
