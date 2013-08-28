@@ -10,7 +10,7 @@ jQuery(document).ready(function(){
     jQuery('.thrace-slider').each(function(key, value){
         var options = jQuery(this).data('options'); 
         var hiddenEl = jQuery('#' + options.id);
-        var initial = parseInt(hiddenEl.val());
+        var initial = parseFloat(hiddenEl.val());
 
         if(!isNaN(initial)){
             if(initial >= options.min && initial <= options.max){

@@ -23,3 +23,7 @@ This changelog references the relevant changes done in 1.0 minor versions.
 
  * fixed issue 5
  * fixed issue 6
+ 
+* 1.0.6 (2013-08-28)
+
+ * fixed issue 6 (small js. fix)

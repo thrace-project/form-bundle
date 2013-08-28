@@ -13,7 +13,7 @@ jQuery(document).ready(function(){
         var value_1 = jQuery('#' + options.id + '_' + options.first_name); 
         var value_2 = jQuery('#' + options.id + '_' + options.second_name); 
         
-        options.values = [parseInt(value_1.val()), parseInt(value_2.val())];
+        options.values = [parseFloat(value_1.val()), parseFloat(value_2.val())];
 
         if(!isNaN(options.values[0]) && !isNaN(options.values[1])){ 
             if(options.values[0] >= options.min){
