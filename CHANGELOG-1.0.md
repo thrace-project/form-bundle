@@ -18,3 +18,8 @@ This changelog references the relevant changes done in 1.0 minor versions.
 * 1.0.4 (2013-07-08)
 
  * fixed issue 4
+ 
+* 1.0.5 (2013-08-28)
+
+ * fixed issue 5
+ * fixed issue 6
