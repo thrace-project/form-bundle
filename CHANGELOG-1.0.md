@@ -27,3 +27,7 @@ This changelog references the relevant changes done in 1.0 minor versions.
 * 1.0.6 (2013-08-28)
 
  * fixed issue 6 (small js. fix)
+ 
+* 1.0.7 (2013-09-19)
+
+ * fixed collection type

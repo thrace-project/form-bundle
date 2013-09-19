@@ -21,14 +21,14 @@ jQuery(document).ready(function(){
         
         buttonAdd.click(function(){
         	var html = prototype.replace(/__name__/g, idx);
-        	container.append('<fieldset data-idx="'+ idx +'" style="margin:20px">' + html + '<button class="'+ options.remove_button_class +' thrace-collection-button-remove">'+ options.remove_button_text + '</button></fieldset>');
-        	idx++;
+        	container.append('<fieldset id="thrace_fieldset_'+ idx +'" data-idx="'+ idx +'" class="'+ options.fieldset_class +'" style="margin:20px">' + html + '<button class="'+ options.remove_button_class +' thrace-collection-button-remove">'+ options.remove_button_text + '</button></fieldset>');
         	
         	var onAddEvent = jQuery.Event('thrace_form.collection.onAdd');
         	onAddEvent.options = options;
-    		
-            jQuery('#' + options.id).trigger(onAddEvent);
+        	onAddEvent.idx = idx;
+        	jQuery('#' + options.id).trigger(onAddEvent);
         	
+            idx++;
         	if(jQuery('#thrace-collection-container-' + options.id + ' > fieldset').length > 0){
         		jQuery('#thrace-collection-empty-text-' + options.id).hide();
         	}

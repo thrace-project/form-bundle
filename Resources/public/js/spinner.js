@@ -4,16 +4,13 @@
  * @author Nikolay Georgiev
  * @version 1.0
  */
-jQuery(document).ready(function(){
-
-    //Searching for spinner widgets
-    jQuery('.thrace-spinner').each(function(key, value){
-        var options = evaluateOptions(jQuery(this).data('options'));
-        var el = jQuery('#' + options.id);
-
-        el.spinner(options);
-    });
-}); 
+var Spinner = function(options){
+	this.options = evaluateOptions(options);
+	this.el = jQuery('#' + options.id);
+	this.initialize = function(){
+		this.el.spinner(this.options);
+	};        
+};
 
 function evaluateOptions (options){
     jQuery.each(options, function(k,v){
@@ -28,5 +25,12 @@ function evaluateOptions (options){
     
     return options;
 }
-
+	
+jQuery(document).ready(function(){
+	
+    //Searching for spinner widgets
+    jQuery('.thrace-spinner').each(function(key, value){
+    	new Spinner(jQuery(this).data('options')).initialize();
+    });
+}); 
 

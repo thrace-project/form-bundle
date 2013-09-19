@@ -16,21 +16,24 @@ public function buildForm(FormBuilderInterface $builder, array $options)
         // .....
         $builder
             ->add('collection', 'thrace_collection', array(
-                'label' => 'form.collection',
-                'type' => 'some_form_type',
-                'options' => array( 
-                    'label_render' => false,
-                    'widget_control_group' => false,
+                'label' => 'Collection',
+                'type' => 'someType',
+                'label_render'  => false,   
+                'horizontal_input_wrapper_class' => 'col-lg-12',
+                'options' => array(
+                    'label_render'        => false,
+                    'horizontal_input_wrapper_class' => 'col-lg-9',
                 ),
                 'configs' => array(
-                	'empty_text' => 'collection.empty',      
-                    'empty_text_class' => 'well',     
-                    'add_button_text' => 'button.add',       
-                    'add_button_class' => 'btn btn-primary',  
-                    'remove_button_text' => 'button.remove',          
-                    'remove_button_class' => 'btn btn-danger',     
+                    'empty_text' => 'collection.empty',
+                    'empty_text_class' => 'well',
+                    'add_button_text' => 'button.add',
+                    'add_button_class' => 'btn btn-primary',
+                    'remove_button_text' => 'button.remove',
+                    'remove_button_class' => 'btn btn-danger',
+                    'fieldset_class' => 'well',
                 )
-            ))        
+            ))      
         ;
 		// .....
     ;

@@ -50,7 +50,8 @@ class CollectionType extends AbstractType
             'add_button_text' => 'button.add',        
             'add_button_class' => '',        
             'remove_button_text' => 'button.remove',        
-            'remove_button_class' => '',        
+            'remove_button_class' => '',  
+            'fieldset_class' => ''      
         );
         
         $resolver->setDefaults(array(
