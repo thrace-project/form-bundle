@@ -14,7 +14,7 @@ public function buildForm(FormBuilderInterface $builder, array $options)
 {
     $builder
         // .....
-        ->add('datepicker', 'neutron_datepicker', array(
+        ->add('datepicker', 'thrace_datepicker', array(
             'label' => 'Datepicker',
             'input' => 'datetime', // [datetime, string, array, timestamp]
             'date_timezone' => null,
