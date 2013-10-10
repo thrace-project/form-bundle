@@ -53,7 +53,7 @@ public function buildForm(FormBuilderInterface $builder, array $options)
 {
     $builder
         // .....
-        ->add('name', 'tharce_select2_ajax', array(
+        ->add('name', 'thrace_select2_ajax', array(
             'label' => 'Select', 
             'multiple' => false,
             'empty_value' => 'Select option',
