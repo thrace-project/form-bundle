@@ -9,6 +9,5 @@ composer.lock
 # Doctrine backup files 
 *.php~
 
-# Filesystem
-.DS_Store
+
 
