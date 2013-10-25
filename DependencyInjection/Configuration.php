@@ -28,6 +28,20 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('thrace_form');
+        $supportedDrivers = array('orm', 'mongodb');
+        
+        $rootNode
+	        ->children()
+		        ->scalarNode('db_driver')
+		        ->validate()
+			        ->ifNotInArray($supportedDrivers)
+			        ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode($supportedDrivers))
+		        ->end()
+		        ->cannotBeOverwritten()
+		        ->isRequired()
+		        ->cannotBeEmpty()
+	        ->end()
+        ;
     
         $this->addRecaptchaConfiguration($rootNode);
         $this->addTinyMCEConfiguration($rootNode);

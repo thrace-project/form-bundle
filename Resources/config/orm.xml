@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+  		<parameter key="thrace_form.form.data_transformer.doctrine.class">Thrace\FormBundle\Form\DataTransformer\ORM\DoctrineTransformer</parameter>
+  		<parameter key="thrace_form.form.data_transformer.array_collection_to_string.class">Thrace\FormBundle\Form\ORM\DataTransformer\ArrayCollectionToStringTransformer</parameter>
+    </parameters>
+	<services>        
+        <service id="thrace_form.form.data_transformer.doctrine" 
+            class="%thrace_form.form.data_transformer.doctrine.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+        <service id="thrace_form.form.data_transformer.array_collection_to_string" 
+            class="%thrace_form.form.data_transformer.array_collection_to_string.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>       
+                
+        
+	</services>
+</container>

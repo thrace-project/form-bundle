@@ -7,11 +7,9 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-namespace Thrace\FormBundle\Form\DataTransformer;
+namespace Thrace\FormBundle\Form\DataTransformer\ODM;
 
-use Thrace\FormBundle\Model\Select2SortableInterface;
-
-use Doctrine\ORM\PersistentCollection;
+use Thrace\FormBundle\Model\Select2SortableInterface\ODM;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -22,6 +20,8 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Symfony\Component\Form\DataTransformerInterface;
+
+use Doctrine\ODM\MongoDB\PersistentCollection;
 
 /**
  * Transforms array to string value
@@ -62,8 +62,7 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
     }
     
     /**
-     * (non-PHPdoc)
-     * @see \Symfony\Component\Form\DataTransformerInterface::transform()
+     * {@inheritDoc}
      */
     public function transform($collection)
     {   
@@ -88,8 +87,7 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
     }
 
     /**
-     * (non-PHPdoc)
-     * @see \Symfony\Component\Form\DataTransformerInterface::reverseTransform()
+     * {@inheritDoc}
      */
     public function reverseTransform($value)
     {  
@@ -110,7 +108,7 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
         $setInversedProperty = sprintf('set%s', ucfirst($this->inversedProperty));
         
         foreach ($data as $idx => $id){
-            $inversedObject = $this->om->getReference($this->inversedClass, (int) $id);
+            $inversedObject = $this->om->find($this->inversedClass, (int) $id);
             $referenceObject = new $referenceClass();
             $referenceObject->{$setInversedProperty}($inversedObject);
             $referenceObject->setPosition($idx);

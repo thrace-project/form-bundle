@@ -37,6 +37,8 @@ class ThraceFormExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
         
+        $loader->load(sprintf('%s.xml', $config['db_driver']));
+        
         if (isset($config['recaptcha'])){
             $container
                 ->getDefinition('thrace_form.form.type.recaptcha')
@@ -74,7 +76,7 @@ class ThraceFormExtension extends Extension
      */
     private function loadExtendedTypes($serviceId, $name, ContainerBuilder $container)
     {
-        foreach (array('choice', 'language', 'country', 'timezone', 'locale', 'entity', 'ajax') as $type) {
+        foreach (array('choice', 'language', 'country', 'timezone', 'locale', 'entity', 'document', 'ajax') as $type) {
             $typeDef = new DefinitionDecorator($serviceId);
             $typeDef
                 ->addArgument($type)
