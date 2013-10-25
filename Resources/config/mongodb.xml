@@ -6,7 +6,7 @@
 
     <parameters>
   		<parameter key="thrace_form.form.data_transformer.doctrine.class">Thrace\FormBundle\Form\DataTransformer\ODM\DoctrineTransformer</parameter>
-  		<parameter key="thrace_form.form.data_transformer.array_collection_to_string.class">Thrace\FormBundle\Form\ODM\DataTransformer\ArrayCollectionToStringTransformer</parameter>
+  		<parameter key="thrace_form.form.data_transformer.array_collection_to_string.class">Thrace\FormBundle\Form\DataTransformer\ODM\ArrayCollectionToStringTransformer</parameter>
     </parameters>
     
 	<services>        

@@ -77,6 +77,7 @@
         
         <service id="thrace_form.form.type.select2" class="%thrace_form.form.type.select2.class%">
             <argument type="service" id="thrace_form.form.data_transformer.array_to_string" />
+            <argument type="service" id="thrace_form.form.data_transformer.doctrine" />
             <tag name="form.type" alias="thrace_select2" />
         </service>
         

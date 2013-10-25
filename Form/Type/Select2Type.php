@@ -37,6 +37,11 @@ class Select2Type extends AbstractType
     protected $transformer;
     
     /**
+     * @var \Symfony\Component\Form\DataTransformerInterface
+     */
+    protected $modelTransformer;
+    
+    /**
      * @var string
      */
     protected $widget;
@@ -48,26 +53,31 @@ class Select2Type extends AbstractType
      * @param DataTransformerInterface $transformer
      * @param string $widget
      */
-    public function __construct(DataTransformerInterface $transformer, $widget)
+    public function __construct(DataTransformerInterface $transformer, DataTransformerInterface $modelTransformer,  $widget)
     {
         $this->transformer = $transformer;
         $this->widget = $widget;
+        $this->modelTransformer = $modelTransformer;
     }
     
     /**
-     * (non-PHPdoc)
-     * @see \Symfony\Component\Form\AbstractType::buildForm()
+     * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         if ($this->widget === 'ajax' && $options['multiple'] === true){
             $builder->addViewTransformer($this->transformer);
+        } elseif ($this->widget === 'ajax' && $options['multiple'] === false){
+        	if (null === $options['class']) {
+        		throw new \InvalidArgumentException('Option "class"  is not set.');
+        	}
+        	$this->modelTransformer->setClass($options['class']);
+        	$builder->addModelTransformer($this->modelTransformer);
         }
     }
 
     /**
-     * (non-PHPdoc)
-     * @see Symfony\Component\Form.AbstractType::buildView()
+     * {@inheritDoc}
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -83,8 +93,7 @@ class Select2Type extends AbstractType
     }
     
     /**
-     * (non-PHPdoc)
-     * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
+     * {@inheritDoc}
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -97,6 +106,7 @@ class Select2Type extends AbstractType
         $defaults = array(
             'multiple' => false,
             'expanded' => false,
+        	'class' => null,
             'empty_value' => 'select.empty_value',
             'translation_domain' => 'ThraceFormBundle',
             'configs' => $defaultConfigs
@@ -125,8 +135,7 @@ class Select2Type extends AbstractType
     }
     
     /**
-     * (non-PHPdoc)
-     * @see Symfony\Component\Form.AbstractType::getParent()
+     * {@inheritDoc}
      */
     public function getParent()
     {
@@ -134,8 +143,7 @@ class Select2Type extends AbstractType
     }
 
     /**
-     * (non-PHPdoc)
-     * @see Symfony\Component\Form.FormTypeInterface::getName()
+     * {@inheritDoc}
      */
     public function getName()
     {

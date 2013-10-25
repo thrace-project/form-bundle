@@ -14,6 +14,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 
 use Symfony\Component\Form\DataTransformerInterface;
+use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 
 /**
  * Model form transformer
@@ -65,11 +66,8 @@ class DoctrineTransformer implements DataTransformerInterface
         if (!is_object($object)){
             throw new UnexpectedTypeException($object, 'object');
         }
-
-        $meta = $this->om->getClassMetadata(get_class($object));
-        $id = $meta->getSingleIdReflectionProperty()->getValue($object);
-
-        return $id;
+		
+        return  $object->getId();
     }
     
     /**

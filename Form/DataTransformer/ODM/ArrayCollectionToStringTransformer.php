@@ -90,11 +90,11 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
      * {@inheritDoc}
      */
     public function reverseTransform($value)
-    {  
+    {    
         if (empty($value)){
             return new ArrayCollection();
         }
-        
+   
         if ($this->collection instanceof PersistentCollection){
             foreach ($this->collection as $item){
                 $this->om->remove($item);
@@ -102,19 +102,19 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
             
             $this->collection->clear();
         }
-
+		
         $data =  explode(',', $value);
         $referenceClass = $this->referenceClass;
         $setInversedProperty = sprintf('set%s', ucfirst($this->inversedProperty));
         
         foreach ($data as $idx => $id){
-            $inversedObject = $this->om->find($this->inversedClass, (int) $id);
+            $inversedObject = $this->om->find($this->inversedClass, $id);
             $referenceObject = new $referenceClass();
             $referenceObject->{$setInversedProperty}($inversedObject);
-            $referenceObject->setPosition($idx);
+            $referenceObject->setPosition($idx);  
             $this->collection->add($referenceObject);  
         }
-        
+		
         return $this->collection;
     }
 }
