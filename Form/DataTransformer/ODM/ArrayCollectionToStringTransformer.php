@@ -73,7 +73,7 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
         $data = array();
         $accessor = PropertyAccess::createPropertyAccessor();
         
-        foreach ($collection as $ref){
+        foreach ($collection as $ref){ 
             if (!$ref instanceof Select2SortableInterface){
                 throw new \InvalidArgumentException('Reference class must be instance of Select2SortableInterface');  
             }
@@ -110,11 +110,12 @@ class ArrayCollectionToStringTransformer implements DataTransformerInterface
         foreach ($data as $idx => $id){
             $inversedObject = $this->om->find($this->inversedClass, $id);
             $referenceObject = new $referenceClass();
-            $referenceObject->{$setInversedProperty}($inversedObject);
-            $referenceObject->setPosition($idx);  
-            $this->collection->add($referenceObject);  
+            //$referenceObject->{$setInversedProperty}($inversedObject);
+            //$referenceObject->setPosition($idx);  
+            $this->collection->add($referenceObject); 
+
         }
-		
+	
         return $this->collection;
     }
 }
