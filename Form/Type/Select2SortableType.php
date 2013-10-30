@@ -99,7 +99,7 @@ class Select2SortableType extends AbstractType
      */
     public function getParent()
     {
-        return 'hidden';
+        return 'text';
     }
 
     /**
