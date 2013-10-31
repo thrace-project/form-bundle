@@ -171,7 +171,8 @@
 
 {% block thrace_multi_select_collection_widget %}
 {% spaceless %} 
-    <div data-prototype="{{ form_widget(form.vars['prototype']) | e }}" data-options="{{ configs|merge({'id': id})|json_encode}}" class="thrace-multi-select">           
+	<label for="{{ id }}" class="{{ configs.label_class|default('') }}">{{ label|trans({}, translation_domain) }}</label>
+    <div data-prototype="{{ form_widget(form.vars['prototype']) | e }}" data-options="{{ configs|merge({'id': id})|json_encode}}" class="thrace-multi-select {{ configs.container_class|default('') }}">           
         {% if configs.datagrid_exists %} 
             {% include 'ThraceFormBundle:Form:datagrid.html.twig' with {'grid': grid} %}
         {% endif %}

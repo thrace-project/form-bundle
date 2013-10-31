@@ -69,7 +69,7 @@ class MultiSelectCollectionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $defaultConfigs = array(
-            'datagrid_exists' => $this->datagridExists        
+            'datagrid_exists' => $this->datagridExists,   
         );
         
         $resolver->setDefaults(array(
