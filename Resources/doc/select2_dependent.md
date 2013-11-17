@@ -21,8 +21,8 @@ public function buildForm(FormBuilderInterface $builder, array $options)
             'choices' => array('value1' => 'label1', 'value2' => 'label2'),
             'multiple' => false,
             'dependent_source' => $this->container->get('router')->generate('ajax_route', array(), true),
-            'first_options'  => array(),
-            'second_options' => array(),
+            'first_options'  => array('horizontal_input_wrapper_class' => 'col-lg-4'), // with mopa bundle
+             'second_options' => array('horizontal_input_wrapper_class' => 'col-lg-4'), // with mopa bundle
             'first_name' => 'first_name',
             'second_name' => 'second_name',
         ))

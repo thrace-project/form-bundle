@@ -110,7 +110,7 @@
 
 {% block thrace_select2_dependent_widget %} 
 {% spaceless %} 
-    {{ form_widget(form[configs.first_name]) }} &nbsp;&nbsp;
+    {{ form_widget(form[configs.first_name]) }} 
     {{ form_widget(form[configs.second_name]) }}
     <span class="thrace-select2-dependent" data-options="{{ configs|merge({'id': id})|json_encode }}" style="display: none"></span>
 {% endspaceless %} 

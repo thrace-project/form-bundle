@@ -4,10 +4,26 @@
  * @author Nikolay Georgiev
  * @version 1.0
  */
-jQuery(document).ready(function(){
-    
-    //Searching for select2 elements
-    jQuery('.thrace-select2').each(function(key, value){
+
+//Create namespace
+window.ThraceForm = window.ThraceForm || {};
+
+var evaluateFn = function(options){
+    jQuery.each(options, function(k,v){
+        if(typeof(v) == 'string' && isNaN(v)){
+            if(v.match('^function')){
+                eval('options.'+ k +' = ' + v);
+            }
+        } else if(jQuery.isPlainObject(v) || jQuery.isArray(v)){
+            evaluateFn(v);
+        }
+    });
+};
+
+ThraceForm.select2 = function (collection){ 
+	var collection = (collection == undefined) ? jQuery('.thrace-select2') : collection;
+	//Searching for select2 elements
+    collection.each(function(key, value){
         var options = jQuery(this).data('options'); 
         var id = options._id;
         delete options._id;
@@ -36,35 +52,31 @@ jQuery(document).ready(function(){
             };
         }
         
-        var evaluateFn = function(options){
-            jQuery.each(options, function(k,v){
-                if(typeof(v) == 'string' && isNaN(v)){
-                    if(v.match('^function')){
-                        eval('options.'+ k +' = ' + v);
-                    }
-                } else if(jQuery.isPlainObject(v) || jQuery.isArray(v)){
-                    evaluateFn(v);
-                }
-            });
-        };
+        
         
         evaluateFn(options);
 
         jQuery('#' + id).select2(options);
     });
-    
-    // Searching for select2-dependent elements
-    jQuery('.thrace-select2-dependent').each(function(key, value){
+};
+
+ThraceForm.select2Dependant = function(collection){
+	
+	var collection = (collection == undefined) ? jQuery('.thrace-select2-dependent') : collection;
+
+    collection.each(function(key, value){
     	var options = jQuery(this).data('options'); 
+    	evaluateFn(options);
     	
-    	var firstEl = jQuery('#' + options.id + '_' + options.first_name);
+    	var firstElId = '#' + options.id + '_' + options.first_name;
+    	var firstEl = jQuery(firstElId);
     	var secondEl = jQuery('#' + options.id + '_' + options.second_name);   
     	
     	if(firstEl.val() != ''){
             buildSelectOptions(secondEl, options.dependent_source, firstEl.val(), options.multiple, options.dependent_value);
     	}
     	
-    	firstEl.on('change', function(event){
+    	jQuery(document).on('change', firstElId, function(event){
             if(event.val == ''){
                 if(options.multiple === false){
                     secondEl.html('<option></option>');
@@ -78,7 +90,23 @@ jQuery(document).ready(function(){
 
     	});
     });
+};
+	
+// Init on document ready
+jQuery(document).ready(function(){
+	ThraceForm.select2();
+	ThraceForm.select2Dependant();
 });
+
+jQuery(document).on('thrace.form.select2.init', function(event, collection){
+	ThraceForm.select2(collection);
+});
+
+jQuery(document).on('thrace.form.select2_dependant.init', function(event, collection){
+	ThraceForm.select2Dependant(collection);
+});
+
+
 
 function buildSelectOptions(element, url, term, multiple, dependent_value)
 {
