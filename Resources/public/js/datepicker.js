@@ -4,13 +4,15 @@
  * @author Nikolay Georgiev
  * @version 1.0
  */
-jQuery(document).ready(function(){
-    
-    // Searching for datepicker elements
-    jQuery('.thrace-datepicker').each(function(key, value){
+
+window.ThraceForm = window.ThraceForm || {};
+
+ThraceForm.datepicker = function (collection){ 
+	var collection = (collection == undefined) ? jQuery('.thrace-datepicker') : collection;
+	collection.each(function(key, value){
         var options = jQuery(this).data('options');
         
-        options = evaluateOptions(options);
+        //options = evaluateOptions(options);
         
         var el = jQuery('#' + options.id);
         
@@ -20,9 +22,11 @@ jQuery(document).ready(function(){
     
         el.datepicker(options);
     });
-    
-    // Searching for daterangepicker elements
-    jQuery('.thrace-daterangepicker').each(function(key, value){
+};
+	
+ThraceForm.dateRangePicker = function(collection){
+	var collection = (collection == undefined) ? jQuery('.thrace-daterangepicker') : collection;
+	collection.each(function(key, value){
     	var options = jQuery(this).data('options'); 
     	options = evaluateOptions(options);
         
@@ -45,6 +49,19 @@ jQuery(document).ready(function(){
         firstEl.datepicker( "option", 'onSelect', onSelect);
         secondEl.datepicker( "option", 'onSelect', onSelect);      
     });
+};
+
+jQuery(document).ready(function(){
+	ThraceForm.datepicker();  
+    ThraceForm.dateRangePicker();  
+});
+
+jQuery(document).on('thrace.form.datepicker.init', function(event, collection){
+	ThraceForm.datepicker(collection);  
+});
+
+jQuery(document).on('thrace.form.dateRangePicker.init', function(event, collection){
+	ThraceForm.dateRangePicker(collection);  
 });
 
 function evaluateOptions (options){
