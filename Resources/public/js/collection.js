@@ -6,7 +6,7 @@ ThraceForm.collection = function(collection){
     
     collection.each(function(k,v){
         var options = jQuery(this).data('options'); 
-        var prototype = jQuery(this).data('prototype');
+        var prototype = jQuery(this).data('prototype'); 
         // fix mopa bundle
         if(prototype == ''){
             prototype = jQuery(this).closest('div[data-prototype]').data('prototype');
@@ -42,8 +42,8 @@ ThraceForm.collection = function(collection){
         });
         
 
-        jQuery(document).on('click', '.thrace-collection-button-remove', function(){ 
-            event.preventDefault();
+        jQuery(document).on('click', '.thrace-collection-button-remove', function(event){ 
+            event.preventDefault();    
             
             jQuery(this).parent().fadeOut(function(){
                 jQuery(this).remove();
@@ -58,8 +58,6 @@ ThraceForm.collection = function(collection){
                 }
 
             });
-
-            return false;
         });
     });
 };
