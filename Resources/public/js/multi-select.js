@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
                 jQuery('#' + data.gridId).jqGrid('setSelection', jQuery(v).val());
             });
         });
-        
+         
         jQuery(this).bind('thrace_datagrid.beforeRowSelect', function(data){ 
        
             var html = prototype.replace(/__name__/g, data.id);
@@ -35,14 +35,13 @@ jQuery(document).ready(function(){
         });
         
         jQuery(this).bind('thrace_datagrid.onSelectAll', function(data){
-            jQuery.each(data.ids, function(k,v){
-                container.find(':hidden[value="'+ v +'"]').remove();
-                
+            container.find(':hidden').remove();
+            jQuery.each(data.ids, function(k,v){              
                 if(data.status === true){
                     var html = prototype.replace(/__name__/g, v);
                     var elm = jQuery(jQuery.parseHTML(html)).val(v);
                     container.append(elm);
-                }
+                } 
             });
         });
     

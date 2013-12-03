@@ -84,12 +84,11 @@ class DoctrineORMTransformer implements DataTransformerInterface
      * @see \Symfony\Component\Form\DataTransformerInterface::reverseTransform()
      */
     public function reverseTransform($value)
-    {  
+    {       
         if (null === $value || '' === $value) {
             return null;
         }
-        
-        return $this->om->getReference($this->class, $value);
 
+        return $this->om->getReference($this->class, $value);
     }
 }

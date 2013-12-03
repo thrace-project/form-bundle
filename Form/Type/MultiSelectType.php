@@ -15,8 +15,6 @@ use Symfony\Component\Form\DataTransformerInterface;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
-use Symfony\Component\Form\FormInterface;
-
 use Symfony\Component\Form\AbstractType;
 
 /**
