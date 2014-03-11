@@ -24,7 +24,7 @@ ThraceForm.collection = function(collection){
             }
         });
         
-        jQuery(document).on('click', '#thrace-collection-button-add-' + options.id, function(){
+        jQuery(document).on('click', '#thrace-collection-button-add-' + options.id, function(event){
             event.preventDefault();
             var html = jQuery(prototype.replace(/__name__/g, idx));
             html.find('[data-collection-remove-btn]').parent().remove(); 
