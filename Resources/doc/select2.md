@@ -54,6 +54,7 @@ public function buildForm(FormBuilderInterface $builder, array $options)
     $builder
         // .....
         ->add('name', 'thrace_select2_ajax', array(
+            'apply_view_transformer' => true,
             'label' => 'Select', 
             'multiple' => false,
             'empty_value' => 'Select option',
@@ -80,6 +81,7 @@ public function buildForm(FormBuilderInterface $builder, array $options)
     ;
 }
 ```
+**Note:** *apply_view_transformer* option enables \Thrace\FormBundle\Form\DataTransformer\ArrayToStringTransformer as the default transformer -only if **multiple** is set true-, setting it **false** allows you to use your own transformer
 
 And the array structure:
 
