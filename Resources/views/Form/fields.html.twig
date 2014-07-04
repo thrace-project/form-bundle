@@ -79,7 +79,7 @@
 {% spaceless %}
     {{ form_widget(form, { 'attr': {'style': 'display:none'} }) }}
     <div id="thrace-rating-widget-{{ id }}"></div>
-    <span class="thrace-rating" data-options="{{ configs|merge({'id': id, 'path': asset(configs.path)})|json_encode }}" style="display:none"></span>  
+    <span class="thrace-rating" data-options="{{ configs|merge({'id': id, 'path': configs.path})|json_encode }}" style="display:none"></span>
 {% endspaceless %}
 {% endblock thrace_rating_widget %}
 
