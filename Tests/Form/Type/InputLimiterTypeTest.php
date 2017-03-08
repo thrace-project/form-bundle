@@ -12,7 +12,7 @@ class InputLimiterTypeTest extends TextTypeTest
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_input_limiter');
+        $form = $this->factory->create(InputLimiterType::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(

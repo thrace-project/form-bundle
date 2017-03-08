@@ -12,7 +12,7 @@ class TinyMceTypeTest extends TextTypeTest
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_tinymce');
+        $form = $this->factory->create(TinyMceType::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(

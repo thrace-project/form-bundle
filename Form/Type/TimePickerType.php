@@ -9,10 +9,10 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
-use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormView;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\OptionsResolver\Options;
 
@@ -73,12 +73,13 @@ class TimePickerType extends AbstractType
     {
         $view->vars['configs'] = $options['configs'];
     }
+
     
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
     
         $defaultConfigs = array(

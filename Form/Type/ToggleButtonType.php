@@ -9,22 +9,18 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\FormView;
-
-use Symfony\Component\OptionsResolver\Options;
-
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Symfony\Component\Form\FormInterface;
-
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * This class creates jquery toggle button element
  *
  * @author Nikolay Georgiev <symfonist@gmail.com>
- * @since 1.0
+ * @since  1.0
  */
 class ToggleButtonType extends AbstractType
 {
@@ -39,26 +35,33 @@ class ToggleButtonType extends AbstractType
     }
 
     /**
-     * (non-PHPdoc)
-     * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaultConfigs = array(
-            'checked_label' => 'label.checked',
+            'checked_label'   => 'label.checked',
             'unchecked_label' => 'label.unchecked',
         );
-        
-        $resolver->setDefaults(array(
-            'translation_domain' => 'ThraceFormBundle',
-            'configs' => $defaultConfigs,
-        ));
-    
-        $resolver->setNormalizers(array(
-            'configs' => function (Options $options, $value) use ($defaultConfigs) {
-                return array_replace_recursive($defaultConfigs, $value);
-            }
-        ));
+
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'ThraceFormBundle',
+                'configs'            => $defaultConfigs,
+            ));
+
+        $resolver->setNormalizers(
+            array(
+                'configs' => function (Options $options, $value) use ($defaultConfigs) {
+                    return array_replace_recursive($defaultConfigs, $value);
+                },
+            ));
+
+        $resolver->setNormalizer(
+            'configs', function (Options $options, $value) use ($defaultConfigs) {
+            return array_replace_recursive($defaultConfigs, $value);
+
+        });
     }
 
 

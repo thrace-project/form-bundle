@@ -15,7 +15,7 @@ class ColorPickerTypeTest extends TextTypeTest
 
         $configs = array();
         
-        $form = $this->factory->create('thrace_colorpicker', null, array(
+        $form = $this->factory->create(ColorPickerType::class, null, array(
             'configs' => $configs,
         ));
 
@@ -28,7 +28,7 @@ class ColorPickerTypeTest extends TextTypeTest
     {
     	return array(
 			new TypeExtensionTest(
-				array(ColorPickerType::class)
+				array(new ColorPickerType())
 			)
     	);
     }

@@ -11,8 +11,8 @@ class DateTimePickerTypeTest extends TextTypeTest
 {
     public function testDefaultConfig()
     {
-        $form = $this->factory->create('thrace_datetimepicker');
-        $form->bind('2012-12-21 10:22');
+        $form = $this->factory->create(DateTimePickerType::class);
+        $form->submit('2012-12-21 10:22');
         $view = $form->createView();
 
         $configs = $view->vars['configs'];
@@ -34,10 +34,10 @@ class DateTimePickerTypeTest extends TextTypeTest
 
     public function testWithSeconds()
     {
-        $form = $this->factory->create('thrace_datetimepicker', null, array(
+        $form = $this->factory->create(DateTimePickerType::class, null, array(
             'with_seconds' => true,
         ));
-        $form->bind('2012-12-21 10:22:21');
+        $form->submit('2012-12-21 10:22:21');
         $view = $form->createView();
 
         $configs = $view->vars['configs'];
@@ -59,33 +59,33 @@ class DateTimePickerTypeTest extends TextTypeTest
 
     public function testInputString()
     {
-        $form = $this->factory->create('thrace_datetimepicker', null, array(
+        $form = $this->factory->create(DateTimePickerType::class, null, array(
             'with_seconds' => true,
             'input' => 'string'
         ));
-        $form->bind('2012-12-21 10:22:21');
+        $form->submit('2012-12-21 10:22:21');
 
         $this->assertSame('2012-12-21 10:22:21', $form->getData());
     }
 
     public function testInputTimestamp()
     {
-        $form = $this->factory->create('thrace_datetimepicker', null, array(
+        $form = $this->factory->create(DateTimePickerType::class, null, array(
             'with_seconds' => true,
             'input' => 'timestamp'
         ));
-        $form->bind('2012-12-21 10:22:21');
+        $form->submit('2012-12-21 10:22:21');
 
         $this->assertSame(strtotime('2012-12-21 10:22:21'), $form->getData());
     }
 
     public function testInputArray()
     {
-        $form = $this->factory->create('thrace_datetimepicker', null, array(
+        $form = $this->factory->create(DateTimePickerType::class, null, array(
             'with_seconds' => true,
             'input' => 'array'
         ));
-        $form->bind('2012-12-21 10:22:21');
+        $form->submit('2012-12-21 10:22:21');
 
         $this->assertSame(
             array(

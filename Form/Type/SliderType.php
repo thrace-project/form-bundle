@@ -9,16 +9,12 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
-use Doctrine\DBAL\Types\TextType;
-use Symfony\Component\Form\FormView;
-
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Symfony\Component\OptionsResolver\Options;
-
-use Symfony\Component\Form\FormInterface;
-
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * This class creates jquery slider element
@@ -42,7 +38,7 @@ class SliderType extends AbstractType
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {      
         $defaultConfigs = array(
             'tpl' => 'slider.value: __value__',
@@ -58,9 +54,9 @@ class SliderType extends AbstractType
             'translation_domain' => 'NeutronFormBundle',
             'configs' => $defaultConfigs,
         ));
-        
-        $resolver->setNormalizers(array(
-            'configs' => function (Options $options, $value) use ($defaultConfigs) {
+
+        $resolver->setNormalizer(
+            'configs', function (Options $options, $value) use ($defaultConfigs) {
                 $value = array_replace_recursive($defaultConfigs, $value);
                 
                 if($value['orientation'] == 'horizontal'){
@@ -75,7 +71,7 @@ class SliderType extends AbstractType
                 
                 return $value;
             }
-        ));
+        );
     }
 
     /**

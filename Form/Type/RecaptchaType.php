@@ -9,11 +9,12 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
-use Doctrine\DBAL\Types\TextType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormView;
 
 use Symfony\Component\OptionsResolver\Options;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Symfony\Component\Form\FormInterface;
@@ -56,7 +57,7 @@ class RecaptchaType extends AbstractType
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaultConfigs = $this->options;
     

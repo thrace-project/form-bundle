@@ -15,6 +15,7 @@ class TypeExtensionTest extends CoreExtension
      */
     public function __construct(array $types)
     {
+        parent::__construct();
         $this->types = $types;
     }
 

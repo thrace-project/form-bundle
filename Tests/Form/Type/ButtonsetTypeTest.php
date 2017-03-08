@@ -7,7 +7,7 @@ use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
 use Symfony\Component\Form\Tests\Extension\Core\Type\ButtonTypeTest;
 
-class ButtonseTypeTest extends ButtonTypeTest
+class ButtonsetTypeTest extends ButtonTypeTest
 {
 
     public function testConfig()
@@ -15,7 +15,7 @@ class ButtonseTypeTest extends ButtonTypeTest
 
         $configs = array();
         
-        $form = $this->factory->create('thrace_buttonset_choice', null, array(
+        $form = $this->factory->create(ButtonsetType::class, null, array(
             'configs' => $configs,
         ));
 

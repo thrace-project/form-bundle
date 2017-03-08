@@ -1,18 +1,16 @@
 <?php
 namespace Thrace\FormBundle\Tests\Form\Type;
 
+use Symfony\Component\Form\Tests\Extension\Core\Type\ChoiceTypeTest;
 use Thrace\FormBundle\Form\Type\ToggleButtonType;
-
-use Symfony\Component\Form\Tests\Extension\Core\Type\CheckboxTypeTest;
-
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class ToggleButtonTypeTest extends CheckboxTypeTest
+class ToggleButtonTypeTest extends ChoiceTypeTest
 {
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_toggle_button');
+        $form = $this->factory->create(ToggleButtonType::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(
@@ -20,12 +18,12 @@ class ToggleButtonTypeTest extends CheckboxTypeTest
             'unchecked_label' => 'label.unchecked' 
         ), $configs);
     }
-    
+
     protected function getExtensions()
     {
     	return array(
 			new TypeExtensionTest(
-				array(ToggleButtonType::class)
+				array(new ToggleButtonType())
 			)
     	);
     }

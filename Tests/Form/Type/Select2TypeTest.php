@@ -12,7 +12,7 @@ class Select2TypeTest extends TextTypeTest
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_select2_choice');
+        $form = $this->factory->create(Select2Type::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(
@@ -24,7 +24,7 @@ class Select2TypeTest extends TextTypeTest
 
     public function testAjaxAndMultiple()
     {
-        $form = $this->factory->create('thrace_select2_ajax', null, array(
+        $form = $this->factory->create(Select2Type::class, null, array(
             'multiple' => true,
             'configs' => array('ajax' => array())
         ));
@@ -35,7 +35,7 @@ class Select2TypeTest extends TextTypeTest
             'allowClear' => true,
             'ajax' => array (),
             'placeholder' => 'select.empty_value',
-            'multiple' => true,        
+            'multiple' => true,
         ), $configs);
     }
     
@@ -53,6 +53,6 @@ class Select2TypeTest extends TextTypeTest
     
     private function getMockTransformer()
     {
-        return $this->getMock('Symfony\Component\Form\DataTransformerInterface');
+        return $this->createMock('Symfony\Component\Form\DataTransformerInterface');
     }
 }

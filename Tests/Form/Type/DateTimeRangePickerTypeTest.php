@@ -15,9 +15,9 @@ class DateTimeRangePickerTypeTest extends TextTypeTest
 
     public function testDefaultConfig()
     {
-        $form = $this->factory->create('thrace_datetimerangepicker');
+        $form = $this->factory->create(DateTimeRangePickerType::class);
 
-        $form->bind(array('first_datetime' => '2012-12-21 10:22', 'second_datetime' => '2012-12-22 12:15'));
+        $form->submit(array('first_datetime' => '2012-12-21 10:22', 'second_datetime' => '2012-12-22 12:15'));
         $form->createView();
         $data = $form->getData();
     

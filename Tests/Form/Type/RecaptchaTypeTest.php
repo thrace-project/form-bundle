@@ -12,7 +12,7 @@ class RecaptchaTypeTest extends TextTypeTest
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_recaptcha');
+        $form = $this->factory->create(RecaptchaType::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(), $configs);

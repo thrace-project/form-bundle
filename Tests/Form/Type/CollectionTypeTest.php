@@ -15,9 +15,10 @@ class CollectionTypeTest extends TypeTest
 
         $configs = array();
         
-        $form = $this->factory->create('thrace_collection', null, array(
+        $form = $this->factory->create(CollectionType::class, null, array(
             'configs' => $configs,
         ));
+
 
         $view = $form->createView();
 
@@ -36,7 +37,7 @@ class CollectionTypeTest extends TypeTest
     {
     	return array(
 			new TypeExtensionTest(
-				array(CollectionType::class)
+				array(new CollectionType())
 			)
     	);
     }

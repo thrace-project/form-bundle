@@ -14,7 +14,7 @@ class SliderRangeTypeTest extends TextTypeTest
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_slider_range');
+        $form = $this->factory->create(SliderRangeType::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(
@@ -31,7 +31,7 @@ class SliderRangeTypeTest extends TextTypeTest
     
     public function testVerticalConfigs()
     {
-        $form = $this->factory->create('thrace_slider_range', null, array(
+        $form = $this->factory->create(SliderRangeType::class, null, array(
             'configs' => array('orientation' => 'vertical')        
         ));
         $view = $form->createView();

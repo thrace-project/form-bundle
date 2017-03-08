@@ -9,25 +9,21 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
-use Symfony\Component\Form\DataTransformerInterface;
-
-use Symfony\Component\Form\FormBuilderInterface;
-
-use Symfony\Component\Form\FormView;
-
-use Symfony\Component\OptionsResolver\Options;
-
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Symfony\Component\Form\FormInterface;
-
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\DataTransformerInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * This class creates jquery select2 element
  *
  * @author Nikolay Georgiev <symfonist@gmail.com>
- * @since 1.0
+ * @since  1.0
  */
 class Select2Type extends AbstractType
 {
@@ -35,32 +31,32 @@ class Select2Type extends AbstractType
      * @var \Symfony\Component\Form\DataTransformerInterface
      */
     protected $transformer;
-    
+
     /**
      * @var string
      */
     protected $widget;
-    
+
 
     /**
      * Construct
-     * 
+     *
      * @param DataTransformerInterface $transformer
-     * @param string $widget
+     * @param string                   $widget
      */
     public function __construct(DataTransformerInterface $transformer, $widget)
     {
         $this->transformer = $transformer;
-        $this->widget = $widget;
+        $this->widget      = $widget;
     }
-    
+
     /**
      * (non-PHPdoc)
      * @see \Symfony\Component\Form\AbstractType::buildForm()
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if ($this->widget === 'ajax' && $options['multiple'] === true){
+        if($this->widget === 'ajax' && $options['multiple'] === true) {
             $builder->addViewTransformer($this->transformer);
         }
     }
@@ -71,66 +67,69 @@ class Select2Type extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['configs'] = $options['configs']; 
-        
+        $view->vars['configs'] = $options['configs'];
+
         // Adds a custom block prefix
         array_splice(
             $view->vars['block_prefixes'],
-            array_search($this->getName(), $view->vars['block_prefixes']),
+            array_search($this->getBlockPrefix(), $view->vars['block_prefixes']),
             0,
             'thrace_select2'
         );
     }
-    
+
+
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        
+
         $defaultConfigs = array(
-            'width' => '300px',
-            'allowClear' => true,  
+            'width'      => '300px',
+            'allowClear' => true,
         );
-        
+
         $defaults = array(
-            'multiple' => false,
-            'expanded' => false,
-            'empty_value' => 'select.empty_value',
+            'multiple'           => false,
+            'expanded'           => false,
+            'empty_value'        => 'select.empty_value',
             'translation_domain' => 'ThraceFormBundle',
-            'configs' => $defaultConfigs
+            'configs'            => $defaultConfigs,
         );
-        
-        $normalizers = array(
-            'expanded' => function (Options $options, $value) {
+
+        if($this->widget !== 'ajax') {
+            $resolver->setNormalizer(
+                'expanded', function (Options $options, $value) {
                 return false;
-            },           
-            'configs' => function (Options $options, $value) use ($defaultConfigs) {
-                $configs = array_replace_recursive($defaultConfigs, $value);
-                
+            });
+
+
+            $resolver->setNormalizer(
+                'configs', function (Options $options, $value) use ($defaultConfigs) {
+                $configs                = array_replace_recursive($defaultConfigs, $value);
                 $configs['placeholder'] = $options->get('empty_value');
-                
-                if(true === $options->get('multiple') && isset($configs['ajax'])){
+                if(true === $options->get('multiple') && isset($configs['ajax'])) {
                     $configs['multiple'] = true;
                 }
 
                 return $configs;
-            }
-        );
-         
+            });
+        }
+
+
         $resolver->setDefaults($defaults);
-        
-        $resolver->setNormalizers($normalizers);
+
     }
-    
+
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::getParent()
      */
     public function getParent()
     {
-        return ($this->widget === 'ajax') ? 'text' : $this->widget;
+        return ($this->widget === 'ajax') ? TextType::class : ChoiceType::class;
     }
 
     /**

@@ -23,7 +23,7 @@ class MultiSelectCollectionTypeTest extends CollectionTypeTest
     
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_multi_select_collection', null, array(
+        $form = $this->factory->create(MultiSelectCollectionType::class, null, array(
             'grid' => $this->createMockDataGrid(),
             'options' => array(
                 'class' => 'Thrace\FormBundle\Tests\Fixture\Entity\Product'        
@@ -38,7 +38,7 @@ class MultiSelectCollectionTypeTest extends CollectionTypeTest
     public function testWithInvalidDataGrid()
     {
         $this->setExpectedException('InvalidArgumentException');
-        $form = $this->factory->create('thrace_multi_select_collection', null, array(
+        $form = $this->factory->create(MultiSelectCollectionType::class, null, array(
             'grid' => new \stdClass(),      
         ));
         
@@ -48,7 +48,7 @@ class MultiSelectCollectionTypeTest extends CollectionTypeTest
     public function testWithInvalidMethodIsMultiSelectEnabled()
     {
         $this->setExpectedException('InvalidArgumentException');
-        $form = $this->factory->create('thrace_multi_select_collection', null, array(
+        $form = $this->factory->create(MultiSelectCollectionType::class, null, array(
             'grid' => $this->createMockDataGrid(false),      
         ));
         
@@ -70,9 +70,8 @@ class MultiSelectCollectionTypeTest extends CollectionTypeTest
     protected function createMockTransformer()
     {
         $mock = $this
-            ->getMockBuilder('Thrace\FormBundle\Form\DataTransformer\DoctrineORMTransformer')
-            ->disableOriginalConstructor()
-            ->getMock()
+            ->createMock('Thrace\FormBundle\Form\DataTransformer\DoctrineORMTransformer')
+
         ;
         
         $mock
@@ -86,7 +85,7 @@ class MultiSelectCollectionTypeTest extends CollectionTypeTest
     
     protected function createMockDataGrid($multiSelectSortableEnabled = true)
     {
-        $mock = $this->getMock('Thrace\DataGridBundle\DataGrid\DataGridInterface');;
+        $mock = $this->createMock('Thrace\DataGridBundle\DataGrid\DataGridInterface');;
     
         $mock
             ->expects($this->any())

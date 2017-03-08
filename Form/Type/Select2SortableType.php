@@ -9,22 +9,23 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
-use Doctrine\DBAL\Types\TextType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\DataTransformerInterface;
 
 use Symfony\Component\Form\FormView;
 
 use Symfony\Component\OptionsResolver\Options;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\Form\FormInterface;
 
 use Symfony\Component\Form\AbstractType;
+ use Thrace\FormBundle\Form\DataTransformer\ArrayCollectionToStringTransformer;
 
-/**
+ /**
  * This class creates jquery multi select sortable element
  *
  * @author Nikolay Georgiev <symfonist@gmail.com>
@@ -41,7 +42,7 @@ class Select2SortableType extends AbstractType
     /**
      * Construct
      * 
-     * @param EventSubscriberInterface $eventSubscriber
+     * @param ArrayCollectionToStringTransformer $dataTransformer
      */
     public function __construct(DataTransformerInterface $dataTransformer)
     {
@@ -74,7 +75,7 @@ class Select2SortableType extends AbstractType
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaultConfigs = array();
         

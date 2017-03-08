@@ -1,22 +1,20 @@
 <?php
 namespace Thrace\FormBundle\Tests\Validator\Constraint;
 
-use Thrace\FormBundle\Validator\Constraint\Recaptcha;
-
-use Symfony\Component\DependencyInjection\Definition;
-
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-
-use Thrace\FormBundle\Validator\Constraint\RecaptchaValidator;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Thrace\ComponentBundle\Test\Tool\BaseTestCase;
+use Thrace\FormBundle\Validator\Constraint\Recaptcha;
+use Thrace\FormBundle\Validator\Constraint\RecaptchaValidator;
 
 class RecaptchaValidatorTest extends BaseTestCase
 {
     
     public function testNullIsValid()
     {
-        $context = $this->getMock('Symfony\Component\Validator\ExecutionContext', array(), array(), '', false);
+        $context = $this->createMock('Symfony\Component\Validator\ExecutionContext');
         
         $validator = new RecaptchaValidator($this->getRequestMock(), array(
             'public_key' => 'xxx',
@@ -33,8 +31,8 @@ class RecaptchaValidatorTest extends BaseTestCase
     
     public function testDataIsValid()
     {
-        $context = $this->getMock('Symfony\Component\Validator\ExecutionContext', array(), array(), '', false);
-        $validator = new RecaptchaValidator($this->getRequestMock('param'), array(
+        $context = $this->createMock('Symfony\Component\Validator\ExecutionContext');
+        $validator = new RecaptchaValidator($this->getRequestMock(), array(
             'public_key' => 'xxx',
             'private_key' => 'xxx',
             'verify_url' => 'http://www.google.com/recaptcha/api/verify'
@@ -45,33 +43,27 @@ class RecaptchaValidatorTest extends BaseTestCase
         $context->expects($this->once())
             ->method('addViolationAt');
 
-        $result = $validator->validate('data', new Recaptcha());
+         $validator->validate('data', new Recaptcha());
     }
     
     
     protected function getRequestMock($param = null)
     {
-        $mock = 
-            $this
-                ->getMockBuilder('Symfony\Component\HttpFoundation\Request')
-                ->disableOriginalConstructor()
-                ->getMock()
-            ;
-        
-        $mock->request = $this->getParameterBagMock($param);
-        $mock->server = $this->getServerBagMock();
-        
-        return $mock;
+        $fakeRequest = Request::create('/', 'GET');
+
+        $fakeRequest->setSession(new Session(new MockArraySessionStorage()));
+        $requestStack = new RequestStack();
+        $requestStack->push($fakeRequest);
+
+        return $requestStack;
     }
     
     protected function getParameterBagMock($param)
     {
         $mock =
             $this
-                ->getMockBuilder('Symfony\Component\HttpFoundation\ParameterBag')
-                ->disableOriginalConstructor()
-                ->getMock()
-            ;
+                ->createMock('Symfony\Component\HttpFoundation\ParameterBag')
+             ;
         
         $mock->expects($this->any())->method('get')->will($this->returnValue($param));
         return $mock;
@@ -81,9 +73,8 @@ class RecaptchaValidatorTest extends BaseTestCase
     {
         $mock =
             $this
-                ->getMockBuilder('Symfony\Component\HttpFoundation\ServerBag')
-                ->disableOriginalConstructor()
-                ->getMock()
+                ->createMock('Symfony\Component\HttpFoundation\ServerBag')
+
             ;
         
         $mock->expects($this->any())->method('get')->will($this->returnValue('http://thrace.local/'));
