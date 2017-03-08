@@ -3,11 +3,11 @@ namespace Thrace\FormBundle\Tests\Form\Type;
 
 use Thrace\FormBundle\Form\Type\Select2Type;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class Select2TypeTest extends TypeTestCase
+class Select2TypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()

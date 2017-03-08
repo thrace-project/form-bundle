@@ -5,11 +5,11 @@ use Thrace\FormBundle\Form\Type\SliderRangeType;
 
 use Thrace\FormBundle\Form\Type\SliderType;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class SliderRangeTypeTest extends TypeTestCase
+class SliderRangeTypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()

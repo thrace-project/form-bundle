@@ -1,13 +1,13 @@
 <?php
 namespace Thrace\FormBundle\Tests\Form\Type;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
 use Thrace\FormBundle\Form\Type\TimePickerType;
 
-class TimePickerTypeTest extends TypeTestCase
+class TimePickerTypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()

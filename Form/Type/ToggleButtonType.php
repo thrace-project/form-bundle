@@ -9,6 +9,7 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormView;
 
 use Symfony\Component\OptionsResolver\Options;
@@ -67,14 +68,14 @@ class ToggleButtonType extends AbstractType
      */
     public function getParent()
     {
-        return 'checkbox';
+        return CheckboxType::class;
     }
 
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.FormTypeInterface::getName()
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'thrace_toggle_button';
     }

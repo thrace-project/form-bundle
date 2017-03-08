@@ -3,11 +3,11 @@ namespace Thrace\FormBundle\Tests\Form\Type;
 
 use Thrace\FormBundle\Form\Type\ToggleButtonType;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\CheckboxTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class ToggleButtonTypeTest extends TypeTestCase
+class ToggleButtonTypeTest extends CheckboxTypeTest
 {
 
     public function testDefaultConfigs()
@@ -25,7 +25,7 @@ class ToggleButtonTypeTest extends TypeTestCase
     {
     	return array(
 			new TypeExtensionTest(
-				array(new ToggleButtonType())
+				array(ToggleButtonType::class)
 			)
     	);
     }

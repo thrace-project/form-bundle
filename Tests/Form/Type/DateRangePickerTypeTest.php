@@ -1,7 +1,7 @@
 <?php
 namespace Thrace\FormBundle\Tests\Form\Type;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Form\Type\DatePickerType;
 
@@ -9,7 +9,7 @@ use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
 use Thrace\FormBundle\Form\Type\DateRangePickerType;
 
-class DateRangePickerTypeTest extends TypeTestCase
+class DateRangePickerTypeTest extends TextTypeTest
 {
 
 

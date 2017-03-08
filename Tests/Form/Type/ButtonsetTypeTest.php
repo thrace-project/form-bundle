@@ -5,9 +5,9 @@ use Thrace\FormBundle\Form\Type\ButtonsetType;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\ButtonTypeTest;
 
-class ButtonseTypeTest extends TypeTestCase
+class ButtonseTypeTest extends ButtonTypeTest
 {
 
     public function testConfig()

@@ -5,9 +5,9 @@ use Thrace\FormBundle\Form\Type\AutocompleteType;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
-class AutocompleteTypeTest extends TypeTestCase
+class AutocompleteTypeTest extends TextTypeTest
 {
 
     public function testInvalidConfigs()
@@ -36,7 +36,7 @@ class AutocompleteTypeTest extends TypeTestCase
     {
     	return array(
 			new TypeExtensionTest(
-				array(new AutocompleteType())
+				array(AutocompleteType::class)
 			)
     	);
     }

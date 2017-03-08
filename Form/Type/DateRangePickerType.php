@@ -76,7 +76,7 @@ class DateRangePickerType extends AbstractType
      * (non-PHPdoc)
      * @see Symfony\Component\Form.FormTypeInterface::getName()
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'thrace_daterangepicker';
     }

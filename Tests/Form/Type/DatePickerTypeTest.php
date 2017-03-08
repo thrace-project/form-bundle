@@ -5,9 +5,9 @@ use Thrace\FormBundle\Form\Type\DatePickerType;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
-class DatePickerTypeTest extends TypeTestCase
+class DatePickerTypeTest extends TextTypeTest
 {
 
     public function testConfig()
@@ -89,7 +89,7 @@ class DatePickerTypeTest extends TypeTestCase
     {
     	return array(
 			new TypeExtensionTest(
-				array(new DatePickerType())
+				array(DatePickerType::class)
 			)
     	);
     }

@@ -117,7 +117,7 @@ class Select2DependentType extends AbstractType
      * (non-PHPdoc)
      * @see Symfony\Component\Form.FormTypeInterface::getName()
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'thrace_select2_dependent';
     }

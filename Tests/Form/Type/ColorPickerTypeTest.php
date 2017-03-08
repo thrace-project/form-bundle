@@ -5,9 +5,9 @@ use Thrace\FormBundle\Form\Type\ColorPickerType;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
-class ColorPickerTypeTest extends TypeTestCase
+class ColorPickerTypeTest extends TextTypeTest
 {
 
     public function testConfig()
@@ -28,7 +28,7 @@ class ColorPickerTypeTest extends TypeTestCase
     {
     	return array(
 			new TypeExtensionTest(
-				array(new ColorPickerType())
+				array(ColorPickerType::class)
 			)
     	);
     }

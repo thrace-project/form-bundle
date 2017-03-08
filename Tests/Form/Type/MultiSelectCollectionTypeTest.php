@@ -5,11 +5,11 @@ use Thrace\FormBundle\Form\Type\MultiSelectType;
 
 use Thrace\FormBundle\Form\Type\MultiSelectCollectionType;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\CollectionTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class MultiSelectCollectionTypeTest extends TypeTestCase
+class MultiSelectCollectionTypeTest extends CollectionTypeTest
 {
 
     protected function setUp()

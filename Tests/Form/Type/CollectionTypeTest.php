@@ -5,9 +5,9 @@ use Thrace\FormBundle\Form\Type\CollectionType;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\CollectionTypeTest as TypeTest;
 
-class CollectionTypeTest extends TypeTestCase
+class CollectionTypeTest extends TypeTest
 {
 
     public function testConfig()
@@ -36,7 +36,7 @@ class CollectionTypeTest extends TypeTestCase
     {
     	return array(
 			new TypeExtensionTest(
-				array(new CollectionType())
+				array(CollectionType::class)
 			)
     	);
     }

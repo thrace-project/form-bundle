@@ -5,11 +5,11 @@ use Thrace\FormBundle\Form\Type\Select2Type;
 
 use Thrace\FormBundle\Form\Type\Select2DependentType;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class Select2DependentTypeTest extends TypeTestCase
+class Select2DependentTypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()
