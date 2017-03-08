@@ -37,7 +37,7 @@ Documentation
 
 The bulk of the documentation is stored in the `Resources/doc/index.md` file in this bundle:
 
-Read the [ThraceFormBundle documentation](https://github.com/thrace-project/form-bundle/blob/master/Resources/doc/index.md)
+Read the [ThraceFormBundle documentation](https://github.com/SalmaAbdelhady/form-bundle/blob/master/Resources/doc/index.md)
 
 Installation
 ------------
