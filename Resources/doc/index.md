@@ -15,7 +15,7 @@ Add on composer.json (see http://getcomposer.org/)
 
     "require" :  {
         // ...
-        "salmaabdelhady/form-bundle":"dev-master",
+        "thrace/form-bundle":"dev-master",
     }
 
 ### Step 2) Register the bundle
