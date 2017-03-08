@@ -1,5 +1,5 @@
 {
-    "name":         "salmaabdelhady/form-bundle",
+    "name":         "thrace/form-bundle",
     "description":  "This bundle provides extra form types empowered by jQuery",
     "keywords":     ["form", "jqueryui", "jQuery", "Symfony", "tinymce", "inputlimiter", "select2", "recaptcha"],
     "type":         "symfony-bundle",
