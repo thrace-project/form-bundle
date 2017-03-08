@@ -9,7 +9,7 @@
  */
 namespace Thrace\FormBundle\Validator\Constraint;
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 use Symfony\Component\Validator\Constraint;
 
@@ -24,27 +24,27 @@ use Symfony\Component\Validator\ConstraintValidator;
 class RecaptchaValidator extends ConstraintValidator
 {
     /**
-     * @var \Symfony\Component\HttpFoundation\Request
+     * @var RequestStack
      */
     protected $request;
-       
+
     /**
      * @var array
      */
     protected $options;
-    
+
     /**
      * Construct
-     * 
+     *
      * @param Request $request
      * @param array $options
      */
-    public function __construct(Request $request, array $options)
+    public function __construct(RequestStack $request, array $options)
     {
-        $this->request = $request;
+        $this->request = $request->getCurrentRequest();
         $this->options = $options;
     }
-    
+
     /**
      * (non-PHPdoc)
      * @see \Symfony\Component\Validator\ConstraintValidator::validate()
