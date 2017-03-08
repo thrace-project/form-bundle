@@ -9,7 +9,7 @@
  */
 namespace Thrace\FormBundle\Form\ChoiceList;
 
-use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
+use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
 
 /**
  * Implementation of choice list. Not-existing choices are accepted now.
@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
  * @author Nikolay Georgiev <symfonist@gmail.com>
  * @since 1.0
  */
-class AjaxChoiceList extends SimpleChoiceList
+class AjaxChoiceList extends ArrayChoiceList
 {
 
     /**
