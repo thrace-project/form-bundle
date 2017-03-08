@@ -1,5 +1,5 @@
 {
-    "name":         "thrace/form-bundle",
+    "name":         "salmaabdelhady/form-bundle",
     "description":  "This bundle provides extra form types empowered by jQuery",
     "keywords":     ["form", "jqueryui", "jQuery", "Symfony", "tinymce", "inputlimiter", "select2", "recaptcha"],
     "type":         "symfony-bundle",
@@ -18,7 +18,7 @@
     "minimum-stability": "dev",
     "require": {
 	"php": ">=5.3.3",
-        "symfony/framework-bundle": "~2.3",
+        "symfony/framework-bundle": "~2.0|~3.0",
         "symfony/form": "~2.3",
         "symfony/validator": "~2.3"
     },
