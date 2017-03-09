@@ -75,7 +75,7 @@ class CollectionType extends AbstractType
      */
     public function getParent()
     {
-        return CollectionType::class;
+        return \Symfony\Component\Form\Extension\Core\Type\CollectionType::class;
     }
 
     /**

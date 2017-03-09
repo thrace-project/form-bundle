@@ -17,8 +17,7 @@ class Select2TypeTest extends TextTypeTest
         $configs = $view->vars['configs'];
         $this->assertSame(array(
             'width' => '300px',
-            'allowClear' => true,
-            'placeholder' => 'select.empty_value'
+            'allowClear' => true
         ), $configs);
     }
 
@@ -31,11 +30,7 @@ class Select2TypeTest extends TextTypeTest
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(
-            'width' => '300px',
-            'allowClear' => true,
             'ajax' => array (),
-            'placeholder' => 'select.empty_value',
-            'multiple' => true,
         ), $configs);
     }
     

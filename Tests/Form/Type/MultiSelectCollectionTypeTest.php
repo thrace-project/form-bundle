@@ -1,12 +1,9 @@
 <?php
 namespace Thrace\FormBundle\Tests\Form\Type;
 
-use Thrace\FormBundle\Form\Type\MultiSelectType;
-
-use Thrace\FormBundle\Form\Type\MultiSelectCollectionType;
-
 use Symfony\Component\Form\Tests\Extension\Core\Type\CollectionTypeTest;
-
+use Thrace\FormBundle\Form\Type\MultiSelectCollectionType;
+use Thrace\FormBundle\Form\Type\MultiSelectType;
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
 class MultiSelectCollectionTypeTest extends CollectionTypeTest
@@ -25,9 +22,7 @@ class MultiSelectCollectionTypeTest extends CollectionTypeTest
     {
         $form = $this->factory->create(MultiSelectCollectionType::class, null, array(
             'grid' => $this->createMockDataGrid(),
-            'options' => array(
-                'class' => 'Thrace\FormBundle\Tests\Fixture\Entity\Product'        
-            ),
+            'data_class' => 'Thrace\FormBundle\Tests\Fixture\Entity\Product',
         ));
         
         $view = $form->createView();
