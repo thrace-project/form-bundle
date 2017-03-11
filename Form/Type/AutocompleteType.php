@@ -9,21 +9,18 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
-use Symfony\Component\Form\FormView;
-
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Symfony\Component\OptionsResolver\Options;
-
-use Symfony\Component\Form\FormInterface;
-
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * This class creates jquery autocomplete element
  *
  * @author Nikolay Georgiev <symfonist@gmail.com>
- * @since 1.0
+ * @since  1.0
  */
 class AutocompleteType extends AbstractType
 {
@@ -36,33 +33,34 @@ class AutocompleteType extends AbstractType
     {
         $view->vars['configs'] = $options['configs'];
     }
-    
+
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaultConfigs = array(
-            'use_categories' => false,        
+            'use_categories' => false,
         );
-        
-        $resolver->setDefaults(array(
-            'translation_domain' => 'ThraceFormBundle',
-            'configs' => $defaultConfigs,
-        ));
-    
-        $resolver->setNormalizers(array(
-            'configs' => function (Options $options, $value) use ($defaultConfigs){
-                $configs = array_replace_recursive($defaultConfigs, $value);
-                
-                if (!isset($configs['source'])){
-                    throw new \InvalidArgumentException('Option "configs:source" is not defined');
-                }
-                
-                return $configs;
+
+        $resolver->setDefaults(
+            array(
+                'translation_domain' => 'ThraceFormBundle',
+                'configs'            => $defaultConfigs,
+            ));
+
+        $resolver->setNormalizer(
+            'configs', function (Options $options, $value) use ($defaultConfigs) {
+            $configs = array_replace_recursive($defaultConfigs, $value);
+
+            if( !isset($configs['source'])) {
+                throw new \InvalidArgumentException('Option "configs:source" is not defined');
             }
-        ));
+
+            return $configs;
+        }
+        );
     }
 
     /**
@@ -71,14 +69,14 @@ class AutocompleteType extends AbstractType
      */
     public function getParent()
     {
-        return 'text';
+        return TextType::class;
     }
 
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.FormTypeInterface::getName()
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'thrace_autocomplete';
     }

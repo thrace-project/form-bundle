@@ -1,19 +1,17 @@
 <?php
 namespace Thrace\FormBundle\Tests\Form\Type;
 
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 use Thrace\FormBundle\Form\Type\AutocompleteType;
-
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
-
-class AutocompleteTypeTest extends TypeTestCase
+class AutocompleteTypeTest extends TextTypeTest
 {
 
     public function testInvalidConfigs()
     {
         $this->setExpectedException('InvalidArgumentException');
-        $form = $this->factory->create('thrace_autocomplete');
+        $form = $this->factory->create(AutocompleteType::class);
 
     }
 
@@ -23,7 +21,7 @@ class AutocompleteTypeTest extends TypeTestCase
         $configs = array(
             'source' => 'autocomplete_route'
         );
-        $form = $this->factory->create('thrace_autocomplete', null, array(
+        $form = $this->factory->create(AutocompleteType::class, null, array(
             'configs' => $configs,
         ));
 

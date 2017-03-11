@@ -1,18 +1,18 @@
 <?php
 namespace Thrace\FormBundle\Tests\Form\Type;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
 use Thrace\FormBundle\Form\Type\InputLimiterType;
 
-class InputLimiterTypeTest extends TypeTestCase
+class InputLimiterTypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_input_limiter');
+        $form = $this->factory->create(InputLimiterType::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(

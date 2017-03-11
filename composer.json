@@ -15,19 +15,19 @@
             "dev-master": "1.0.*-dev"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
 	"php": ">=5.3.3",
-        "symfony/framework-bundle": "~2.3",
-        "symfony/form": "~2.3",
-        "symfony/validator": "~2.3"
+        "symfony/framework-bundle": "~2.0|~3.0",
+        "symfony/form": "~2.3|~3.0",
+        "symfony/validator": "~2.3|~3.0"
     },
     "require-dev": {
         "thrace/component-bundle": "*",
         "thrace/datagrid-bundle": "dev-master",
-        "phpunit/phpunit": "3.7.*@dev",
-        "symfony/doctrine-bridge": "~2.3",
-        "doctrine/orm": "2.*",
+        "phpunit/phpunit": "^4.8|~5.7",
+        "symfony/doctrine-bridge": "~2.7|~3.0",
+        "doctrine/orm": "2.*,>=2.4.5",
         "doctrine/doctrine-bundle": "1.*"
     },
     "autoload": {

@@ -1,24 +1,23 @@
 <?php
 namespace Thrace\FormBundle\Tests\Form\Type;
 
-use Thrace\FormBundle\Form\Type\Select2Type;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 use Thrace\FormBundle\Form\Type\Select2DependentType;
-
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
-
+use Thrace\FormBundle\Form\Type\Select2Type;
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class Select2DependentTypeTest extends TypeTestCase
+class Select2DependentTypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_select2_dependent', null, array(
-            'choices' => array('value1' => 'label1', 'value2' => 'label2'), 
+        $form    = $this->factory->create(
+            Select2DependentType::class, null, array(
+            'choices'          => array('value1' => 'label1', 'value2' => 'label2'),
             'dependent_source' => 'ajax_route'
         ));
-        $view = $form->createView();
+        $view    = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(
             'dependent_value' => null,
@@ -35,8 +34,8 @@ class Select2DependentTypeTest extends TypeTestCase
     	return array(
 			new TypeExtensionTest(
 				array(
-			        new Select2Type($this->getMockTransformer(), 'choice'), 
-			        new Select2DependentType(), 
+                    new Select2Type($this->getMockTransformer(), ChoiceType::class),
+                    new Select2DependentType(),
 		        )
 			)
     	);
@@ -44,6 +43,6 @@ class Select2DependentTypeTest extends TypeTestCase
     
     private function getMockTransformer()
     {
-        return $this->getMock('Symfony\Component\Form\DataTransformerInterface');
+        return $this->createMock('Symfony\Component\Form\DataTransformerInterface');
     }
 }

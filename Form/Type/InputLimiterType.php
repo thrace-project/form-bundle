@@ -9,8 +9,10 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormView;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Symfony\Component\OptionsResolver\Options;
@@ -41,7 +43,7 @@ class InputLimiterType extends AbstractType
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaultConfigs = array(
             'limit' => 255,
@@ -67,14 +69,14 @@ class InputLimiterType extends AbstractType
      */
     public function getParent()
     {
-        return 'textarea';
+        return TextareaType::class;
     }
 
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.FormTypeInterface::getName()
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'thrace_input_limiter';
     }

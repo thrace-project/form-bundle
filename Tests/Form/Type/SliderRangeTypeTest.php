@@ -5,16 +5,16 @@ use Thrace\FormBundle\Form\Type\SliderRangeType;
 
 use Thrace\FormBundle\Form\Type\SliderType;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class SliderRangeTypeTest extends TypeTestCase
+class SliderRangeTypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_slider_range');
+        $form = $this->factory->create(SliderRangeType::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(
@@ -31,7 +31,7 @@ class SliderRangeTypeTest extends TypeTestCase
     
     public function testVerticalConfigs()
     {
-        $form = $this->factory->create('thrace_slider_range', null, array(
+        $form = $this->factory->create(SliderRangeType::class, null, array(
             'configs' => array('orientation' => 'vertical')        
         ));
         $view = $form->createView();

@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormInterface;
 
 use Symfony\Component\Form\FormView;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Symfony\Component\OptionsResolver\Options;
@@ -37,8 +38,8 @@ class DateRangePickerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add($options['first_name'], 'thrace_datepicker', array_merge($options['options'], $options['first_options']))
-            ->add($options['second_name'], 'thrace_datepicker', array_merge($options['options'], $options['second_options']))
+            ->add($options['first_name'], DatePickerType::class, array_merge($options['options'], $options['first_options']))
+            ->add($options['second_name'], DatePickerType::class, array_merge($options['options'], $options['second_options']))
         ;
     }
     
@@ -58,7 +59,7 @@ class DateRangePickerType extends AbstractType
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
 
         $resolver->setDefaults(array(
@@ -76,7 +77,7 @@ class DateRangePickerType extends AbstractType
      * (non-PHPdoc)
      * @see Symfony\Component\Form.FormTypeInterface::getName()
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'thrace_daterangepicker';
     }

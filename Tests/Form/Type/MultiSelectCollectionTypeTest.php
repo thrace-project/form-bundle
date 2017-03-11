@@ -1,15 +1,12 @@
 <?php
 namespace Thrace\FormBundle\Tests\Form\Type;
 
-use Thrace\FormBundle\Form\Type\MultiSelectType;
-
+use Symfony\Component\Form\Tests\Extension\Core\Type\CollectionTypeTest;
 use Thrace\FormBundle\Form\Type\MultiSelectCollectionType;
-
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
-
+use Thrace\FormBundle\Form\Type\MultiSelectType;
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class MultiSelectCollectionTypeTest extends TypeTestCase
+class MultiSelectCollectionTypeTest extends CollectionTypeTest
 {
 
     protected function setUp()
@@ -23,11 +20,9 @@ class MultiSelectCollectionTypeTest extends TypeTestCase
     
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_multi_select_collection', null, array(
+        $form = $this->factory->create(MultiSelectCollectionType::class, null, array(
             'grid' => $this->createMockDataGrid(),
-            'options' => array(
-                'class' => 'Thrace\FormBundle\Tests\Fixture\Entity\Product'        
-            ),
+            'data_class' => 'Thrace\FormBundle\Tests\Fixture\Entity\Product',
         ));
         
         $view = $form->createView();
@@ -38,7 +33,7 @@ class MultiSelectCollectionTypeTest extends TypeTestCase
     public function testWithInvalidDataGrid()
     {
         $this->setExpectedException('InvalidArgumentException');
-        $form = $this->factory->create('thrace_multi_select_collection', null, array(
+        $form = $this->factory->create(MultiSelectCollectionType::class, null, array(
             'grid' => new \stdClass(),      
         ));
         
@@ -48,7 +43,7 @@ class MultiSelectCollectionTypeTest extends TypeTestCase
     public function testWithInvalidMethodIsMultiSelectEnabled()
     {
         $this->setExpectedException('InvalidArgumentException');
-        $form = $this->factory->create('thrace_multi_select_collection', null, array(
+        $form = $this->factory->create(MultiSelectCollectionType::class, null, array(
             'grid' => $this->createMockDataGrid(false),      
         ));
         
@@ -70,9 +65,8 @@ class MultiSelectCollectionTypeTest extends TypeTestCase
     protected function createMockTransformer()
     {
         $mock = $this
-            ->getMockBuilder('Thrace\FormBundle\Form\DataTransformer\DoctrineORMTransformer')
-            ->disableOriginalConstructor()
-            ->getMock()
+            ->createMock('Thrace\FormBundle\Form\DataTransformer\DoctrineORMTransformer')
+
         ;
         
         $mock
@@ -86,7 +80,7 @@ class MultiSelectCollectionTypeTest extends TypeTestCase
     
     protected function createMockDataGrid($multiSelectSortableEnabled = true)
     {
-        $mock = $this->getMock('Thrace\DataGridBundle\DataGrid\DataGridInterface');;
+        $mock = $this->createMock('Thrace\DataGridBundle\DataGrid\DataGridInterface');;
     
         $mock
             ->expects($this->any())

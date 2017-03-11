@@ -5,9 +5,9 @@ use Thrace\FormBundle\Form\Type\CollectionType;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\CollectionTypeTest as TypeTest;
 
-class CollectionTypeTest extends TypeTestCase
+class CollectionTypeTest extends TypeTest
 {
 
     public function testConfig()
@@ -15,9 +15,10 @@ class CollectionTypeTest extends TypeTestCase
 
         $configs = array();
         
-        $form = $this->factory->create('thrace_collection', null, array(
+        $form = $this->factory->create(CollectionType::class, null, array(
             'configs' => $configs,
         ));
+
 
         $view = $form->createView();
 

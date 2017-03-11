@@ -5,16 +5,16 @@ use Thrace\FormBundle\Form\Type\Select2SortableType;
 
 use Thrace\FormBundle\Form\Type\Select2Type;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class Select2SortableTypeTest extends TypeTestCase
+class Select2SortableTypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_select2_sortable', null, array(
+        $form = $this->factory->create(Select2SortableType::class, null, array(
             'reference_class' => 'ReferenceClass',        
             'inversed_class' => 'InversedClass',        
             'inversed_property' => 'InversedProperty',        
@@ -32,38 +32,19 @@ class Select2SortableTypeTest extends TypeTestCase
     	return array(
 			new TypeExtensionTest(
 				array(
-			        new Select2SortableType($this->getMockTransformer()), 
+			        new Select2SortableType($this->getMockBuilderTransformer()),
 		        )
 			)
     	);
     }
     
-    private function getMockTransformer()
+    private function getMockBuilderTransformer()
     {
         $mock = $this
-            ->getMockBuilder('Thrace\FormBundle\Form\DataTransformer\ArrayCollectionToStringTransformer')
-            ->disableOriginalConstructor()
-            ->getMock()
+            ->createMock('Thrace\FormBundle\Form\DataTransformer\ArrayCollectionToStringTransformer')
+
         ;
-        
-        $mock
-            ->expects($this->once())
-            ->method('setReferenceClass')
-            ->with('ReferenceClass')
-        ;
-        
-        $mock
-            ->expects($this->once())
-            ->method('setInversedClass')
-            ->with('InversedClass')
-        ;
-        
-        $mock
-            ->expects($this->once())
-            ->method('setInversedProperty')
-            ->with('InversedProperty')
-        ;
-        
+
         return $mock;
     }
 }

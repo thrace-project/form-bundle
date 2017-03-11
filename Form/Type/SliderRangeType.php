@@ -9,23 +9,19 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
-use Symfony\Component\Form\FormView;
-
-use Symfony\Component\OptionsResolver\Options;
-
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Symfony\Component\Form\FormBuilderInterface;
-
-use Symfony\Component\Form\FormInterface;
-
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * This class creates jquery slider range element
  *
  * @author Nikolay Georgiev <symfonist@gmail.com>
- * @since 1.0
+ * @since  1.0
  */
 class SliderRangeType extends AbstractType
 {
@@ -37,9 +33,8 @@ class SliderRangeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add($options['first_name'], 'hidden')
-            ->add($options['second_name'], 'hidden')
-        ;   
+            ->add($options['first_name'], HiddenType::class)
+            ->add($options['second_name'], HiddenType::class);
     }
 
     /**
@@ -50,53 +45,54 @@ class SliderRangeType extends AbstractType
     {
         $view->vars['configs'] = $options['configs'];
     }
-    
+
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $defaults = array(
-            'tpl' => 'slider.value.min: __value_1__ slider.value.max: __value_2__',
-            'min' => 0,
-            'max' => 100,
+            'tpl'         => 'slider.value.min: __value_1__ slider.value.max: __value_2__',
+            'min'         => 0,
+            'max'         => 100,
             'orientation' => 'horizontal',
-            'width' => '300px',
-            'height' => '300px',
-       );
-    
-        $resolver->setDefaults(array(
-            'first_name' => 'first_slider',
-            'second_name' => 'second_slider',
-            'translation_domain' => 'ThraceFormBundle',
-            'configs' => $defaults,
-        ));
-    
-        $resolver->setNormalizers(array(
-            'configs' => function (Options $options, $value) use ($defaults) {
-                $value = array_replace_recursive($defaults, $value);
-                
-                if($value['orientation'] == 'horizontal'){
-                    unset($value['height']);
-                } else {
-                    unset($value['width']);
-                }
-                
-                $value['first_name'] = $options->get('first_name');
-                $value['second_name'] = $options->get('second_name');
-                $value['range'] = true;
+            'width'       => '300px',
+            'height'      => '300px',
+        );
 
-                return $value;
+        $resolver->setDefaults(
+            array(
+                'first_name'         => 'first_slider',
+                'second_name'        => 'second_slider',
+                'translation_domain' => 'ThraceFormBundle',
+                'configs'            => $defaults,
+            ));
+
+        $resolver->setNormalizer(
+            'configs', function (Options $options, $value) use ($defaults) {
+            $value = array_replace_recursive($defaults, $value);
+
+            if($value['orientation'] == 'horizontal') {
+                unset($value['height']);
+            } else {
+                unset($value['width']);
             }
-        ));
+
+            $value['first_name']  = $options->get('first_name');
+            $value['second_name'] = $options->get('second_name');
+            $value['range']       = true;
+
+            return $value;
+        }
+        );
     }
 
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.FormTypeInterface::getName()
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'thrace_slider_range';
     }

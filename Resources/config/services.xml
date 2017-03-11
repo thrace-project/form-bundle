@@ -73,8 +73,8 @@
 		
             <service id="thrace_form.form.type.recaptcha" class="%thrace_form.form.type.recaptcha.class%" />
         
-            <service id="thrace_form.validator.constraint.recaptcha" class="%thrace_form.validator.constraint.recaptcha.class%" scope="request">
-                <argument type="service" id="request" />
+            <service id="thrace_form.validator.constraint.recaptcha" class="%thrace_form.validator.constraint.recaptcha.class%">
+                <argument type="service" id="request_stack" />
             </service>
         
             <service id="thrace_form.form.type.select2" class="%thrace_form.form.type.select2.class%">

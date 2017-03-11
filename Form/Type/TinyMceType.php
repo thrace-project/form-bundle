@@ -9,10 +9,12 @@
  */
 namespace Thrace\FormBundle\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormView;
 
 use Symfony\Component\OptionsResolver\Options;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Symfony\Component\Form\FormBuilderInterface;
@@ -56,10 +58,9 @@ class TinyMceType extends AbstractType
     }
 
     /**
-     * (non-PHPdoc)
-     * @see Symfony\Component\Form.AbstractType::setDefaultOptions()
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
 
         $defaultConfigs = $this->options;
@@ -68,14 +69,12 @@ class TinyMceType extends AbstractType
             'translation_domain' => 'ThraceFormBundle',
             'configs' => $defaultConfigs
         ));
-        
-        $resolver->setNormalizers(array(
-            'configs' => function (Options $options, $value) use ($defaultConfigs){
-                $configs = array_replace_recursive($defaultConfigs, $value);
-    
-                return $configs;
-            }
-        ));
+
+        $resolver->setNormalizer(
+            'configs', function (Options $options, $value) use ($defaultConfigs) {
+            return array_replace_recursive($defaultConfigs, $value);
+
+        });
     }  
 
     /**
@@ -84,14 +83,14 @@ class TinyMceType extends AbstractType
      */
     public function getParent()
     {
-        return 'textarea';
+        return TextareaType::class;
     }
 
     /**
      * (non-PHPdoc)
      * @see Symfony\Component\Form.FormTypeInterface::getName()
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'thrace_tinymce';
     }

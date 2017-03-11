@@ -3,16 +3,16 @@ namespace Thrace\FormBundle\Tests\Form\Type;
 
 use Thrace\FormBundle\Form\Type\SliderType;
 
-use Symfony\Component\Form\Tests\Extension\Core\Type\TypeTestCase;
+use Symfony\Component\Form\Tests\Extension\Core\Type\TextTypeTest;
 
 use Thrace\FormBundle\Tests\Form\Extension\TypeExtensionTest;
 
-class SliderTypeTest extends TypeTestCase
+class SliderTypeTest extends TextTypeTest
 {
 
     public function testDefaultConfigs()
     {
-        $form = $this->factory->create('thrace_slider');
+        $form = $this->factory->create(SliderType::class);
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(
@@ -28,7 +28,7 @@ class SliderTypeTest extends TypeTestCase
     
     public function testWithVerticalOrientationConfigs()
     {
-        $form = $this->factory->create('thrace_slider', null, array('configs' => array('orientation' => 'vertical')));
+        $form = $this->factory->create(SliderType::class, null, array('configs' => array('orientation' => 'vertical')));
         $view = $form->createView();
         $configs = $view->vars['configs'];
         $this->assertSame(array(
